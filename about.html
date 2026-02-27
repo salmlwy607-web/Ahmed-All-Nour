@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="تعرف على صيدلية أبو نور - خبرة سنوات في خدمة أهالي أبوكبير وتوفير أفضل الرعاية الصحية والمنتجات الطبية.">
+    <title>من نحن | صيدلية أبو نور</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .page-header {
+            background: linear-gradient(rgba(0, 168, 89, 0.1), rgba(0, 77, 64, 0.05));
+            padding: 4rem 1rem;
+            text-align: center;
+        }
+
+        .content-section {
+            padding: 4rem 1rem;
+            line-height: 1.8;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        @media (max-width: 768px) {
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .about-image {
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-xl);
+        }
+
+        .vision-mission {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        @media (max-width: 576px) {
+            .vision-mission {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .info-card {
+            background: var(--clr-bg-card);
+            padding: 2rem;
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-md);
+            border-bottom: 4px solid var(--clr-primary);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header (copied from index) -->
+    <header class="main-header">
+        <div class="container d-flex justify-between align-center">
+            <a href="index.html" class="logo d-flex align-center">
+                <div class="logo-icon"><i class="fa-solid fa-capsules"></i></div>
+                <div class="logo-text">
+                    <h1>صيدلية أبو نور</h1>
+                    <p>رعايتك الصحية، أولويتنا</p>
+                </div>
+            </a>
+            <div class="header-actions d-flex align-center">
+                <button id="mobile-menu-btn" class="action-btn"
+                    style="display: none; background:none; border:none; font-size: 1.5rem;">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+            <nav class="main-nav">
+                <ul class="nav-links d-flex">
+                    <li><a href="index.html">الرئيسية</a></li>
+                    <li><a href="about.html" class="active">من نحن</a></li>
+                    <li><a href="contact.html">اتصل بنا</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="page-header">
+        <div class="container fade-up">
+            <h1 class="text-4xl">من نحن</h1>
+            <p class="text-gray text-xl">صيدلية أبو نور - شريكك الموثوق في رحلة الصحة والعافية</p>
+        </div>
+    </section>
+
+    <section class="content-section">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&q=80"
+                        alt="صيدلية أبو نور">
+                </div>
+                <div class="about-text">
+                    <h2 class="mb-4">قصتنا وهدفنا</h2>
+                    <p>تأسست صيدلية أبو نور في مدينة أبوكبير لتكون أكثر من مجرد مكان لصرف الدواء، بل شريكاً حقيقياً في
+                        رعاية صحة المجتمع. نحن نؤمن أن كل مريض يستحق الحصول على دواء أصغر، نصيحة طبية دقيقة، وتجربة شراء
+                        مريحة وسريعة.</p>
+                    <p>نحرص دائماً على توفير أحدث المنتجات من الوكلاء المعتمدين، سواء كانت أدوية علاجية، فيتامينات
+                        ومكملات غذائية، أو أشهر ماركات العناية بالبشرة والشعر العالمية.</p>
+
+                    <div class="vision-mission">
+                        <div class="info-card">
+                            <i class="fa-solid fa-eye text-primary text-3xl mb-3"></i>
+                            <h3>رؤيتنا</h3>
+                            <p>أن نصبح الوجهة الرقمية والمادية الأولى للرعاية الصحية في منطقة الشرقية، مجمعين بين
+                                التكنولوجيا والخبرة الصيدلانية.</p>
+                        </div>
+                        <div class="info-card">
+                            <i class="fa-solid fa-bullseye text-primary text-3xl mb-3"></i>
+                            <h3>رسالتنا</h3>
+                            <p>توفير الدواء والمنتجات الصحية بجودة عالية وأسعار عادلة، مع الالتزام بسرعة التوصيل وتقديم
+                                الاستشارة الصيدلانية المجانية.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="main-footer">
+        <div class="footer-top py-5" style="background:var(--clr-bg-light);">
+            <div class="container text-center">
+                <h2 class="mb-4">صيدلية أبو نور</h2>
+                <p class="text-muted mb-4">أبوكبير – المحطة – أمام مقلة السندباد<br>تليفون: 01068187197</p>
+                <div class="social-links d-flex justify-center gap-3">
+                    <a href="#" class="text-primary"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" class="text-primary"><i class="fa-brands fa-whatsapp"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom py-3 text-center bg-dark text-white">
+            <p>&copy; 2026 صيدلية أبو نور. جميع الحقوق محفوظة.</p>
+        </div>
+    </footer>
+    <script src="js/script.js"></script>
+</body>
+
+</html>
+
+</html>

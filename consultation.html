@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>استشارة صيدلانية فورية | صيدلية أبو نور</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        :root {
+            --chat-bg: #f0f4f8;
+            --bot-bubble: #ffffff;
+            --user-bubble: linear-gradient(135deg, #00a859 0%, #008f4c 100%);
+            --glass-bg: rgba(255, 255, 255, 0.85);
+            --accent-clr: #00d2ff;
+        }
+
+        body {
+            background: linear-gradient(135deg, #e0f2f1 0%, #f1f8e9 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            font-family: 'Cairo', sans-serif;
+            margin: 0;
+            overflow-x: hidden;
+        }
+
+        /* Premium Glass Design */
+        .chat-container {
+            flex: 1;
+            max-width: 1000px;
+            margin: 2rem auto;
+            width: 95%;
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            border-radius: 30px;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            animation: slideInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .chat-header {
+            background: linear-gradient(135deg, #001f1a 0%, #004d40 100%);
+            color: white;
+            padding: 1.5rem 2.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 4px solid var(--clr-primary);
+            position: relative;
+            z-index: 10;
+        }
+
+        .bot-profile {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .avatar-container {
+            position: relative;
+        }
+
+        .bot-avatar {
+            width: 60px;
+            height: 60px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--clr-primary);
+            font-size: 2rem;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            border: 2px solid var(--clr-primary);
+        }
+
+        .bot-status {
+            width: 14px;
+            height: 14px;
+            background: #4caf50;
+            border-radius: 50%;
+            border: 2.5px solid white;
+            position: absolute;
+            bottom: 2px;
+            right: 2px;
+            box-shadow: 0 0 10px #4caf50;
+        }
+
+        .chat-messages {
+            flex: 1;
+            padding: 2.5rem;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 1.8rem;
+            scroll-behavior: smooth;
+            background: radial-gradient(circle at top right, rgba(0, 168, 89, 0.05), transparent);
+        }
+
+        .message {
+            max-width: 80%;
+            padding: 1.2rem 1.8rem;
+            border-radius: 25px;
+            font-size: 1.1rem;
+            position: relative;
+            line-height: 1.8;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.04);
+            animation: popIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+            opacity: 0;
+            transform: scale(0.9);
+        }
+
+        @keyframes popIn {
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .bot-msg {
+            background: white;
+            color: var(--clr-secondary);
+            align-self: flex-start;
+            border-bottom-right-radius: 5px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            border-right: 4px solid var(--clr-primary);
+            position: relative;
+        }
+
+        .bot-msg::before {
+            content: '\f4ad';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            right: -35px;
+            top: 5px;
+            color: var(--clr-primary);
+            font-size: 1.2rem;
+            opacity: 0.6;
+        }
+
+        .user-msg {
+            background: var(--clr-primary);
+            color: white;
+            align-self: flex-end;
+            border-bottom-left-radius: 5px;
+            box-shadow: 0 4px 15px rgba(0, 168, 89, 0.2);
+        }
+
+        /* Suggestions Area */
+        .suggestions-container {
+            padding: 1rem 2.5rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            background: rgba(255, 255, 255, 0.5);
+            border-top: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .suggestion-chip {
+            background: white;
+            color: var(--clr-primary);
+            padding: 0.6rem 1.2rem;
+            border-radius: 20px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            border: 1px solid var(--clr-primary);
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .suggestion-chip:hover {
+            background: var(--clr-primary);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 168, 89, 0.2);
+        }
+
+        .chat-input-area {
+            padding: 2rem 2.5rem;
+            background: white;
+            border-top: 1px solid rgba(0, 0, 0, 0.05);
+            display: flex;
+            gap: 1.2rem;
+            align-items: center;
+            box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.02);
+        }
+
+        .input-wrapper {
+            flex: 1;
+            position: relative;
+        }
+
+        .chat-input {
+            width: 100%;
+            border: 2px solid #e2e8f0;
+            border-radius: 40px;
+            padding: 1.2rem 2rem;
+            padding-left: 4.5rem;
+            font-family: inherit;
+            font-size: 1.15rem;
+            transition: all 0.3s;
+            background: #f7fafc;
+        }
+
+        .chat-input:focus {
+            border-color: var(--clr-primary);
+            background: white;
+            box-shadow: 0 0 0 5px rgba(0, 168, 89, 0.15);
+            outline: none;
+        }
+
+        .send-btn {
+            background: var(--user-bubble);
+            color: white;
+            width: 65px;
+            height: 65px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.6rem;
+            box-shadow: 0 10px 25px rgba(0, 168, 89, 0.35);
+            border: none;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .send-btn:hover {
+            transform: scale(1.1) rotate(-15deg);
+            box-shadow: 0 15px 35px rgba(0, 168, 89, 0.45);
+        }
+
+        /* Bot Thinking Animation */
+        .typing-bubble {
+            display: flex;
+            gap: 7px;
+            padding: 1.2rem 1.5rem;
+            background: white;
+            width: fit-content;
+            border-radius: 25px;
+            margin-bottom: 1rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            background: var(--clr-primary);
+            border-radius: 50%;
+            animation: bounce 1.4s infinite ease-in-out;
+        }
+
+        .dot:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .dot:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        @keyframes bounce {
+
+            0%,
+            80%,
+            100% {
+                transform: scale(0.6);
+                opacity: 0.4;
+            }
+
+            40% {
+                transform: scale(1.2);
+                opacity: 1;
+            }
+        }
+
+        .disclaimer-badge {
+            background: #fff5f5;
+            color: #c53030;
+            padding: 1rem 2rem;
+            border-inline-start: 6px solid #f56565;
+            font-size: 1rem;
+            margin: 1rem 2.5rem;
+            border-radius: 12px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .treatment-card {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 20px;
+            padding: 1.5rem;
+            margin-top: 1rem;
+            border-right: 6px solid #38a169;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+        }
+
+        /* Responsive Improvements */
+        @media (max-width: 768px) {
+            .chat-container {
+                margin: 0;
+                width: 100%;
+                border-radius: 0;
+                height: 100vh;
+            }
+
+            .chat-header {
+                padding: 1rem;
+            }
+
+            .chat-messages {
+                padding: 1.5rem;
+            }
+
+            .message {
+                max-width: 90%;
+                font-size: 1rem;
+            }
+
+            .chat-input-area {
+                padding: 1rem;
+            }
+
+            .send-btn {
+                width: 55px;
+                height: 55px;
+            }
+
+            .disclaimer-badge {
+                margin: 0.5rem 1rem;
+                font-size: 0.85rem;
+            }
+
+            .suggestions-container {
+                padding: 0.5rem 1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="main-header glass-effect">
+        <div class="container d-flex justify-between align-center">
+            <a href="index.html" class="logo d-flex align-center">
+                <div class="logo-icon"><i class="fa-solid fa-house-medical-circle-check"></i></div>
+                <div class="logo-text">
+                    <h1 style="font-size: 1.4rem;">صيدلية أبو نور <span
+                            style="font-size:0.8rem; color:var(--clr-primary);">الذكية</span></h1>
+                </div>
+            </a>
+            <div class="d-flex gap-3 align-center">
+                <a href="tel:01068187197" class="btn btn-outline"
+                    style="border-radius: 20px; color: var(--clr-primary); font-weight: 700;">
+                    <i class="fa-solid fa-phone"></i> اتصل بنا
+                </a>
+                <a href="index.html" class="btn btn-primary" style="border-radius: 20px;">العودة للمتجر</a>
+            </div>
+        </div>
+    </header>
+
+    <div class="chat-container">
+        <div class="chat-header">
+            <div class="bot-profile">
+                <div class="avatar-container">
+                    <div class="bot-avatar">
+                        <i class="fa-solid fa-robot"></i>
+                    </div>
+                    <span class="bot-status"></span>
+                </div>
+                <div>
+                    <h2 style="margin:0; color:white; font-size:1.4rem; letter-spacing: 0.5px;">المساعد الصيدلاني الذكي
+                    </h2>
+                    <span style="font-size:0.9rem; opacity:0.9;">أبو نور - مستشاركم الدائم 🟢 متواجد الآن</span>
+                </div>
+            </div>
+            <div class="header-actions">
+                <button onclick="window.location.reload()" class="btn"
+                    style="color:white; border:1px solid rgba(255,255,255,0.4); border-radius: 15px; padding: 0.6rem 1.2rem;">
+                    <i class="fa-solid fa-rotate"></i> جلسة جديدة
+                </button>
+            </div>
+        </div>
+
+        <div class="disclaimer-badge">
+            <i class="fa-solid fa-circle-exclamation" style="font-size: 1.4rem;"></i>
+            <span>تنبيه طبي: هذا المستشار للإرشاد الأولي فقط. لا يغني عن زيارة الطبيب المختص في الحالات العاجلة.</span>
+        </div>
+
+        <div class="chat-messages" id="chatMessages">
+            <div class="message bot-msg">
+                <h3 style="margin-top:0; color:var(--clr-primary); font-size: 1.2rem;">أهلاً بك في صيدلية أبو نور! 🌟
+                </h3>
+                أنا مساعدك الطبي الرقمي. يمكنك سؤالي عن أي عرض تشعر به (مثل: صداع، حموضة، كحة) وسأقوم باقتراح أفضل
+                الأدوية المتوفرة وبدائلها فوراً.
+            </div>
+        </div>
+
+        <div id="typingIndicator" style="display: none; padding: 0 2.5rem;">
+            <div class="typing-bubble">
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+            </div>
+        </div>
+
+        <!-- Suggestions chips -->
+        <div class="suggestions-container">
+            <div class="suggestion-chip" onclick="handleSuggestion('صداع')"><i class="fa-solid fa-head-side-virus"></i>
+                صداع</div>
+            <div class="suggestion-chip" onclick="handleSuggestion('سخونية')"><i
+                    class="fa-solid fa-temperature-high"></i> سخونية</div>
+            <div class="suggestion-chip" onclick="handleSuggestion('مغص')"><i class="fa-solid fa-stomach"></i> مغص</div>
+            <div class="suggestion-chip" onclick="handleSuggestion('برد')"><i class="fa-solid fa-snowflake"></i> برد
+                وأنفلونزا</div>
+            <div class="suggestion-chip" onclick="handleSuggestion('حموضة')"><i
+                    class="fa-solid fa-fire-flame-curved"></i> حموضة</div>
+            <div class="suggestion-chip" onclick="handleSuggestion('كحة')"><i class="fa-solid fa-lungs"></i> كحة</div>
+        </div>
+
+        <form class="chat-input-area" id="consultationForm">
+            <div class="input-wrapper">
+                <input type="text" id="userInput" class="chat-input" placeholder="اكتب هنا ما تشعر به..."
+                    autocomplete="off">
+            </div>
+            <button type="submit" class="send-btn" id="sendBtn"><i class="fa-solid fa-paper-plane"></i></button>
+        </form>
+    </div>
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const chatMessages = document.getElementById('chatMessages');
+            const consultationForm = document.getElementById('consultationForm');
+            const userInput = document.getElementById('userInput');
+            const typingIndicator = document.getElementById('typingIndicator');
+            const pharmacyPhone = "01068187197";
+
+            // Scroll to bottom helper
+            const scrollToBottom = () => {
+                chatMessages.scrollTo({
+                    top: chatMessages.scrollHeight,
+                    behavior: 'smooth'
+                });
+            };
+
+            // Global suggestion handler
+            window.handleSuggestion = (text) => {
+                userInput.value = text;
+                consultationForm.dispatchEvent(new Event('submit'));
+            };
+
+            const diseaseDatabase = {
+                "صداع": {
+                    treatments: "بنادول اكسترا (Panadol Extra)",
+                    status: "متوفر",
+                    alternatives: ["أدول", "باشيمول", "بارامول", "سيتال", "بيرال"],
+                    usage: "قرص كل 6 إلى 8 ساعات عند اللزوم، بحد أقصى 8 أقراص يومياً.",
+                    note: "يُفضل استخدامه بعد الأكل لتجنب التهاب المعدة. إذا كان الصداع شديداً أو مستمراً، يرجى قياس ضغط الدم."
+                },
+                "سخونية": {
+                    treatments: "سيتال (Cetal)",
+                    status: "متوفر",
+                    alternatives: ["فيفادول", "أدول", "بارامول", "بيرال", "تيمبرا"],
+                    usage: "قرص كل 6 ساعات حتى انخفاض الحرارة.",
+                    note: "استخدم كمادات مياه فاترة على الرقبة وتحت الإبط. إذا استمرت الحرارة أكثر من 48 ساعة، يرجى زيارة الطبيب."
+                },
+                "حرارة": {
+                    treatments: "سيتال (Cetal)",
+                    status: "متوفر",
+                    alternatives: ["فيفادول", "أدول", "بارامول", "بيرال", "تيمبرا"],
+                    usage: "قرص كل 6 ساعات حتى انخفاض الحرارة.",
+                    note: "استخدم كمادات مياه فاترة على الرقبة وتحت الإبط. إذا استمرت الحرارة أكثر من 48 ساعة، يرجى زيارة الطبيب."
+                },
+                "كحة ببلغم": {
+                    treatments: "توسكان (Tusskan)",
+                    status: "متوفر",
+                    alternatives: ["فاركوسولفين", "ميكوسولفان", "طارد للبلغم", "أمبروكسول", "بيسولفون"],
+                    usage: "ملعقة كبيرة 3 مرات يومياً.",
+                    note: "اشرب الكثير من السوائل الدافئة واليانسون. تجنب المشروبات الباردة والتدخين."
+                },
+                "كحة ناشفة": {
+                    treatments: "سيلجون (Selgon)",
+                    status: "متوفر",
+                    alternatives: ["نوتوس", "كوديلار", "ساينكود", "كافوسيد", "برونكوفين"],
+                    usage: "قرص أو ملعقة 3 مرات يومياً.",
+                    note: "يفضل تناول ملعقة عسل نحل طبيعي قبل النوم لتهدئة السعال."
+                },
+                "كحة": {
+                    treatments: "سيلجون (للمواد الناشفة) أو توسكان (للبلغم)",
+                    status: "متوفر",
+                    alternatives: ["برونكوفين", "توسكان", "أوبلكس", "سيلجون", "برونشيكم"],
+                    usage: "ملعقة كبيرة 3 مرات يومياً.",
+                    note: "حدد نوع الكحة (ناشفة أم ببلغم) لنعطيك التشخيص الأدق."
+                },
+                "مغص": {
+                    treatments: "بسكوبان (Buscopan)",
+                    status: "متوفر",
+                    alternatives: ["فيسرالجين", "سبازموبرالجين", "سبازمومين", "ريابال", "جاست ريج"],
+                    usage: "قرص 3 مرات يومياً قبل الأكل.",
+                    note: "يفيد شرب النعناع أو الكمون الدافئ. إذا كان الألم في الجانب الأيمن السفلي، توجه للطوارئ فوراً."
+                },
+                "حموضة": {
+                    treatments: "جافيسكون (Gaviscon)",
+                    status: "متوفر",
+                    alternatives: ["إبيكوجيل", "ميكوجيل", "مالوكس", "راني", "فوار فواكه"],
+                    usage: "كيس فوار عند اللزوم، أو ملعقة كبيرة من الشراب بعد الأكل بـ 15 دقيقة.",
+                    note: "تجنب الأكلات الحارة والمسبكة قبل النوم بـ 3 ساعات."
+                },
+                "إسهال": {
+                    treatments: "ستربتوكين (Streptoquin)",
+                    status: "متوفر",
+                    alternatives: ["أنتينال", "نانازوكسيد", "دياكس", "فورازول", "سميكتا"],
+                    usage: "قرص 3 مرات يومياً بعد الأكل.",
+                    note: "أهم خطوة هي شرب الكثير من السوائل لتعويض الفقد. يفضل تناول البطاطس المسلوقة والزبادي."
+                },
+                "إمساك": {
+                    treatments: "دوفلاك (Duphalac)",
+                    status: "متوفر",
+                    alternatives: ["لاكتولوز", "سيدالاك", "مينالاكس", "لاكسولايت", "بي كولاكس"],
+                    usage: "ملعقة كبيرة من الشراب مرة واحدة ليلاً.",
+                    note: "أكثر من تناول الألياف الموجودة في الخضروات والفاكهة واشرب كميات كبيرة من الماء."
+                },
+                "برد": {
+                    treatments: "كونجيستال (Congestal)",
+                    status: "متوفر",
+                    alternatives: ["كومتركس", "بنادول كولد اند فلو", "123", "فلوريست", "نايت آند داي"],
+                    usage: "قرص كل 8 ساعات.",
+                    note: "راحة تامة في السرير مع تناول الليمون والبرتقال. تحذير: يمنع لمرضى الضغط المرتفع."
+                },
+                "أنفلونزا": {
+                    treatments: "كونجيستال (Congestal)",
+                    status: "متوفر",
+                    alternatives: ["كومتركس", "بنادول كولد اند فلو", "123", "فلوريست", "نايت آند داي"],
+                    usage: "قرص كل 8 ساعات.",
+                    note: "راحة تامة في السرير مع تناول الليمون والبرتقال. تحذير: يمنع لمرضى الضغط المرتفع."
+                },
+                "حساسية": {
+                    treatments: "تلفاست (Telfast)",
+                    status: "متوفر",
+                    alternatives: ["أليجرا", "فيكسودين", "كلاريتين", "موسيدين", "زيرتك"],
+                    usage: "قرص واحد يومياً قبل النوم.",
+                    note: "تجنب المسببات المعروفة للحساسية مثل الأتربة أو أنواع معينة من الطعام."
+                },
+                "آلام مفاصل": {
+                    treatments: "بروفين 400 (Brufen 400)",
+                    status: "متوفر",
+                    alternatives: ["ماركوفين", "أدفل", "أنتيفلام", "فولتارين", "كتفلان"],
+                    usage: "قرص بعد الأكل عند اللزوم بحد أقصى 3 مرات.",
+                    note: "تجنب الوقوف لفترات طويلة. إذا كان هناك تورم، استخدم كمدات باردة."
+                },
+                "قولون": {
+                    treatments: "كولونا (Colona)",
+                    status: "متوفر",
+                    alternatives: ["ليبراكس", "كولوسباسمين", "جاست ريج", "سبازمومين", "سبازموديجستين"],
+                    usage: "قرص قبل الأكل بـ 20 دقيقة 3 مرات يومياً.",
+                    note: "البعد عن التوتر والأكلات المهيجة للقولون مثل البقوليات والثوم."
+                },
+                "أسنان": {
+                    treatments: "كتفاست (Catafast) فوار",
+                    status: "متوفر",
+                    alternatives: ["كتافلام", "بروفين", "بايرونال", "أدول", "سيبروباي"],
+                    usage: "كيس فوار عند الألم الشديد، بحد أقصى مرتين يومياً.",
+                    note: "هذا مسكن مؤقت فقط، يرجى زيارة طبيب الأسنان لعلاج المشكلة الأساسية."
+                },
+                "حلق": {
+                    treatments: "ستربسلز (Strepsils)",
+                    status: "متوفر",
+                    alternatives: ["لاريبرو", "برادورال", "أوروفار", "زورون", "ميبو ماوث"],
+                    usage: "قرص استحلاب كل 3 ساعات.",
+                    note: "الغرغرة بمياه دافئة وملح مفيدة جداً."
+                },
+                "ترجيع": {
+                    treatments: "موتيليوم (Motilium)",
+                    status: "متوفر",
+                    alternatives: ["بريمبران", "موتينورم", "إمريست", "دانست", "نافيدوكسين"],
+                    usage: "قرص قبل الأكل بـ 30 دقيقة.",
+                    note: "تجنب الأكل الدسم واحرص على شرب السوائل ببطء شديد (رشفات)."
+                },
+                "أنيميا": {
+                    treatments: "فيروجلوبين (Feroglobin)",
+                    status: "متوفر",
+                    alternatives: ["فيرو فول", "فيفول", "هيموتون", "فيتوجلوبين", "سانجوبيون"],
+                    usage: "كبسولة واحدة يومياً بعد الغداء.",
+                    note: "تناول الخضروات الورقية والعسل الأسود والكبده، واحرص على تناول فيتامين C لزيادة الامتصاص."
+                },
+                "حب شباب": {
+                    treatments: "أكنيميسين (Aknemycin) محلول",
+                    status: "متوفر",
+                    alternatives: ["أدابالين جيل", "أكنى فرى", "ماربالين", "بانوكسيل", "أكنيتريت"],
+                    usage: "دهان ليلي على الحبوب فقط.",
+                    note: "تجنب لمس الحبوب باليد أو عصرها، واستخدم غسولاً مناسباً للبشرة الدهنية."
+                },
+                "جرح": {
+                    treatments: "بيتادين (Betadine) محلول",
+                    status: "متوفر",
+                    alternatives: ["بولي فيدون", "درماتين", "سافلون", "بانتينول", "ميبو"],
+                    usage: "تطهير مكان الجرح مرتين يومياً.",
+                    note: "إذا كان الجرح عميقاً أو يحتاج غرز، يرجى التوجه للمستشفى."
+                },
+                "حرق": {
+                    treatments: "ميبو (MEBO) مرهم",
+                    status: "متوفر",
+                    alternatives: ["ديرمازين", "بيرن سول", "هيالوسول", "سيلفر مار", "آفروبيرن"],
+                    usage: "دهان طبقة رقيقة 3 مرات يومياً.",
+                    note: "لا تضع ثلجاً مباشراً، استخدم مياه جارية باردة لمدة 10 دقائق فور حدوث الحرق."
+                },
+                "جيوب أنفية": {
+                    treatments: "أوتريفين (Otrivin) بخاخ",
+                    status: "متوفر",
+                    alternatives: ["نازونيكس", "فليكسوناز", "بكلوناز", "ديلاربت", "رينازول"],
+                    usage: "بخة في كل فتحة أنف عند اللزوم.",
+                    note: "لا تستخدم بخاخات الاحتقان لأكثر من 5 أيام متتالية."
+                }
+            };
+
+            const defaultResponse = `أهلاً بك! بصفتي صيدليك الآلي، أحاول مساعدتك بأفضل المعلومات المتاحة. للأسف لم أتعرف على الحالة بدقة. 
+            يرجى الاتصال بصيدلية أبو نور مباشرة على الرقم: **${pharmacyPhone}** للتحدث مع الصيدلي المختص، أو زيارة الطبيب إذا كانت الأعراض حادة.`;
+
+            function addMessage(text, sender) {
+                const msgDiv = document.createElement('div');
+                msgDiv.className = `message ${sender}-msg`;
+                // Format markdown stars and lines
+                let formatted = text.replace(/\n/g, '<br>')
+                    .replace(/\*\*(.*?)\*\*/g, '<strong style="color:var(--clr-primary)">$1</strong>')
+                    .replace(/- (.*?)(<br>|$)/g, '<div style="margin-right:15px; position:relative; margin-bottom:8px;"><i class="fa-solid fa-check-circle" style="position:absolute; right:-20px; top:5px; font-size:0.8rem; color:var(--clr-primary);"></i> $1</div>');
+
+                msgDiv.innerHTML = formatted;
+                chatMessages.appendChild(msgDiv);
+                scrollToBottom();
+            }
+
+            consultationForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const text = userInput.value.trim();
+                if (!text) return;
+
+                // User Message
+                addMessage(text, 'user');
+                userInput.value = '';
+
+                // Show Typing
+                typingIndicator.style.display = 'block';
+                scrollToBottom();
+
+                // Logical Delay
+                setTimeout(() => {
+                    typingIndicator.style.display = 'none';
+                    let response = defaultResponse;
+
+                    // Improved Search Logic
+                    const searchLower = text.toLowerCase();
+                    for (const key in diseaseDatabase) {
+                        if (searchLower.includes(key)) {
+                            const info = diseaseDatabase[key];
+                            const alts = info.alternatives.slice(0, 5).join(' - ');
+
+                            response = `<h4 style="margin:0 0 10px 0; color:var(--clr-primary); border-bottom:1px solid #eee; padding-bottom:5px;">نتائج الاستشارة لحالة: ${key}</h4>
+                            \n- **العلاج المقترح:** ${info.treatments} (**${info.status}**)
+                            \n- **البدائل المتاحة (5 بدائل):** ${alts}
+                            \n- **طريقة الاستخدام:** ${info.usage}
+                            \n- **نصيحة الصيدلي:** ${info.note}
+                            \n\n<div style="background:var(--clr-primary); color:white; padding:10px; border-radius:10px; text-align:center; margin-top:10px;">
+                                لطلب الدواء، اتصل بنا: <strong>${pharmacyPhone}</strong>
+                            </div>`;
+                            break;
+                        }
+                    }
+
+                    addMessage(response, 'bot');
+                    saveConsultation(text, response);
+                }, 1000);
+            });
+
+            function saveConsultation(userText, botResponse) {
+                try {
+                    const consultations = JSON.parse(localStorage.getItem('abunour_consultations')) || [];
+                    const sessionId = localStorage.getItem('abunour_session_id') || 'SESS-' + Date.now();
+                    localStorage.setItem('abunour_session_id', sessionId);
+
+                    const existingSessionIndex = consultations.findIndex(c => c.id === sessionId);
+                    if (existingSessionIndex !== -1) {
+                        consultations[existingSessionIndex].lastMessage = userText;
+                        consultations[existingSessionIndex].date = new Date().toLocaleString('ar-EG');
+                    } else {
+                        consultations.push({
+                            id: sessionId,
+                            user: "زائر استشارة هاتفية",
+                            lastMessage: userText,
+                            date: new Date().toLocaleString('ar-EG')
+                        });
+                    }
+                    localStorage.setItem('abunour_consultations', JSON.stringify(consultations));
+                } catch (e) { console.error("Error saving consult:", e); }
+            }
+        });
+    </script>
+</body>
+
+</html>

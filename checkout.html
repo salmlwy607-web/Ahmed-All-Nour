@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="إتمام الطلب والدفع بأمان تام في صيدلية أبو نور. توصيل سريع داخل أبوكبير والدفع عند الاستلام.">
+    <meta name="keywords" content="دفع آمن, صيدلية أبو نور, استلام دواء, شراء فيتامينات, توصيل أدوية أبوكبير">
+    <meta name="author" content="Abunour Pharmacy">
+    <meta name="robots" content="noindex, nofollow"> <!-- Checkout should usually be hidden from search engines -->
+    <meta property="og:title" content="إتمام الدفع والاستلام | صيدلية أبو نور">
+    <meta property="og:type" content="website">
+    <title>إتمام الدفع والاستلام | صيدلية أبو نور</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .checkout-container {
+            max-width: 1000px;
+            margin: 3rem auto;
+            padding: 0 1rem;
+        }
+
+        .checkout-grid {
+            display: grid;
+            gap: 2rem;
+            grid-template-columns: 1.5fr 1fr;
+        }
+
+        @media (max-width: 768px) {
+            .checkout-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .checkout-box {
+            background: var(--clr-bg-card);
+            border-radius: var(--radius-md);
+            padding: 2rem;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--clr-border);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border: 1px solid var(--clr-border);
+            border-radius: var(--radius-sm);
+            background: var(--clr-bg-light);
+            color: var(--clr-text);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--clr-primary);
+        }
+
+        .order-summary-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--clr-border-light);
+            padding: 1rem 0;
+        }
+
+        .order-summary-item:last-child {
+            border-bottom: none;
+        }
+
+        .order-total {
+            font-size: 1.5rem;
+            color: var(--clr-primary);
+            font-weight: 700;
+            border-top: 2px solid var(--clr-border);
+            padding-top: 1rem;
+            margin-top: 1rem;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .coupon-box {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .coupon-msg {
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+        }
+
+        .payment-option {
+            display: block;
+            border: 1px solid var(--clr-border);
+            border-radius: var(--radius-sm);
+            padding: 1rem;
+            margin-bottom: 1rem;
+            cursor: pointer;
+            transition: all var(--transition-fast);
+        }
+
+        .payment-option:hover {
+            border-color: var(--clr-primary);
+        }
+
+        .payment-option input {
+            margin-inline-end: 0.5rem;
+        }
+
+        .payment-icon {
+            float: left;
+            font-size: 1.5rem;
+            color: var(--clr-text-light);
+        }
+
+        body.dark-mode .checkout-box {
+            background: var(--clr-bg-card);
+            border-color: var(--clr-border);
+        }
+
+        body.dark-mode .form-control {
+            background: var(--clr-bg-main);
+            border-color: var(--clr-border);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Top Bar & Header Simplified for Checkout -->
+    <header class="main-header" style="border-bottom: 1px solid var(--clr-border);">
+        <div class="container d-flex justify-between align-center py-3">
+            <a href="index.html" class="logo d-flex align-center">
+                <div class="logo-icon"><i class="fa-solid fa-capsules"></i></div>
+                <div class="logo-text">
+                    <h1>صيدلية أبو نور</h1>
+                    <p>دفع آمن واستلام سريع</p>
+                </div>
+            </a>
+            <a href="index.html" class="btn btn-outline"><i class="fa-solid fa-arrow-right"></i> عودة للمتجر</a>
+        </div>
+    </header>
+
+    <div class="checkout-container">
+        <h2 class="mb-4">إتمام الطلب والاستلام</h2>
+
+        <div class="checkout-grid">
+            <!-- Billing Details -->
+            <div class="checkout-box">
+                <h3 class="mb-4"><i class="fa-solid fa-location-dot text-primary me-2"></i> بيانات الاستلام</h3>
+                <form id="checkoutForm">
+                    <div class="row">
+                        <div class="col-md-6 form-group">
+                            <label class="form-label mb-2 d-block">الاسم بالكامل</label>
+                            <input type="text" class="form-control" required placeholder="مثال: أحمد محمود">
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <label class="form-label mb-2 d-block">رقم الهاتف</label>
+                            <input type="tel" class="form-control" required placeholder="01xxxxxxxxx">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label mb-2 d-block">العنوان التفصيلي (المدينة، الحي، الشارع)</label>
+                        <input type="text" class="form-control" required placeholder="مثال: أبوكبير - بجوار...">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label mb-2 d-block">ملاحظات إضافية للصيدلي (اختياري)</label>
+                        <textarea class="form-control" rows="3"
+                            placeholder="ملاحظات حول طريقة الاستلام أو موعد التوصيل..."></textarea>
+                    </div>
+
+                    <h3 class="mb-3 mt-5"><i class="fa-solid fa-wallet text-primary me-2"></i> طريقة الدفع</h3>
+                    <label class="payment-option">
+                        <input type="radio" name="payment" value="cod" checked> الدفع نقداً عند الاستلام
+                        <i class="fa-solid fa-money-bill-wave payment-icon text-success"></i>
+                    </label>
+                    <label class="payment-option">
+                        <input type="radio" name="payment" value="card"> بطاقة ائتمانية (قريباً)
+                        <i class="fa-brands fa-cc-visa payment-icon"></i>
+                    </label>
+
+                    <button type="submit" class="btn btn-primary w-full mt-4"
+                        style="font-size:1.2rem; padding: 1rem;"><i class="fa-solid fa-check-circle"></i> تأكيد الطلب
+                        إلكترونياً</button>
+                </form>
+            </div>
+
+            <!-- Order Summary -->
+            <div class="checkout-box" style="height: fit-content;">
+                <h3 class="mb-4">ملخص الطلب</h3>
+
+                <div class="order-items">
+                    <!-- Hardcoded single item for testing, in real app fetched from cart -->
+                    <div class="order-summary-item">
+                        <div class="d-flex align-center gap-2">
+                            <div
+                                style="width:50px; height:50px; background:var(--clr-bg-light); border-radius:5px; display:flex; align-items:center; justify-content:center;">
+                                <i class="fa-solid fa-pills text-primary"></i>
+                            </div>
+                            <div>
+                                <h4 style="font-size:0.95rem; margin:0">منتجات متنوعة من السلة</h4>
+                                <small class="text-muted">الكمية: 1</small>
+                            </div>
+                        </div>
+                        <strong>500 ج.م</strong>
+                    </div>
+                </div>
+
+                <div class="coupon-box">
+                    <input type="text" id="couponInput" class="form-control" placeholder="لديك كود خصم؟">
+                    <button id="applyCouponBtn" class="btn btn-dark">تطبيق</button>
+                </div>
+                <div id="couponMessage" class="coupon-msg"></div>
+
+                <div class="order-summary-item" style="margin-top:2rem">
+                    <span class="text-muted">المجموع الفرعي</span>
+                    <strong id="subtotalPrice">500 ج.م</strong>
+                </div>
+                <div class="order-summary-item">
+                    <span class="text-muted">رسوم التوصيل (أبوكبير)</span>
+                    <strong>15 ج.م</strong>
+                </div>
+                <div class="order-summary-item" id="discountRow" style="display:none; color:var(--clr-success)">
+                    <span>خصم الكوبون</span>
+                    <strong id="discountValue">- 0 ج.م</strong>
+                </div>
+
+                <div class="order-total">
+                    <span>الإجمالي الكلي</span>
+                    <span id="finalTotalPrice">515 ج.م</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JS for Checkout & Coupons -->
+    <script>
+        const subtotal = 500;
+        const shipping = 15;
+        let currentDiscount = 0;
+
+        document.getElementById('applyCouponBtn').addEventListener('click', function (e) {
+            e.preventDefault();
+            const inputVal = document.getElementById('couponInput').value.trim().toUpperCase();
+            const msgObj = document.getElementById('couponMessage');
+
+            // Get coupons from admin
+            const availableCoupons = JSON.parse(localStorage.getItem('abunour_coupons')) || [];
+
+            const matchedCoupon = availableCoupons.find(c => c.code === inputVal);
+
+            if (matchedCoupon) {
+                // Apply discount
+                const discountRatio = matchedCoupon.discount / 100;
+                currentDiscount = subtotal * discountRatio;
+
+                msgObj.textContent = 'تم تطبيق الكوبون بنجاح!';
+                msgObj.className = 'coupon-msg text-success';
+
+                document.getElementById('discountRow').style.display = 'flex';
+                document.getElementById('discountValue').textContent = `- ${currentDiscount.toFixed(2)} ج.م`;
+
+                updateTotal();
+            } else {
+                msgObj.textContent = 'كود الكوبون غير صحيح أو منتهي.';
+                msgObj.className = 'coupon-msg text-danger';
+
+                currentDiscount = 0;
+                document.getElementById('discountRow').style.display = 'none';
+                updateTotal();
+            }
+        });
+
+        function updateTotal() {
+            const total = subtotal + shipping - currentDiscount;
+            document.getElementById('finalTotalPrice').textContent = `${total.toFixed(2)} ج.م`;
+        }
+
+        document.getElementById('checkoutForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            // Gather order data
+            const orderData = {
+                id: 'ORD-' + Date.now(),
+                customerName: this.querySelector('input[type="text"]').value,
+                phone: this.querySelector('input[type="tel"]').value,
+                address: this.querySelector('input[placeholder*="أبوكبير"]').value,
+                notes: this.querySelector('textarea').value,
+                paymentMethod: this.querySelector('input[name="payment"]:checked').value === 'cod' ? 'دفع عند الاستلام' : 'بطاقة ائتمانية',
+                total: document.getElementById('finalTotalPrice').textContent,
+                date: new Date().toLocaleString('ar-EG'),
+                status: 'بانتظار المراجعة'
+            };
+
+            // Save to LocalStorage
+            const existingOrders = JSON.parse(localStorage.getItem('abunour_orders')) || [];
+            existingOrders.push(orderData);
+            localStorage.setItem('abunour_orders', JSON.stringify(existingOrders));
+
+            alert('تم استلام طلبك بنجاح! سيتم التواصل معك قريباً للتوصيل.');
+            window.location.href = 'index.html';
+        });
+    </script>
+</body>
+
+</html>

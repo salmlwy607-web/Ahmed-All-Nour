@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تواصل معنا | صيدلية أبو نور</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .contact-page {
+            padding: 4rem 1rem;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+
+        @media (max-width: 768px) {
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .contact-info-list {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .info-item {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .info-item i {
+            font-size: 1.5rem;
+            color: var(--clr-primary);
+        }
+
+        .contact-form-box {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border: 1px solid var(--clr-border);
+            border-radius: 8px;
+            font-family: inherit;
+        }
+
+        .form-control:focus {
+            border-color: var(--clr-primary);
+        }
+    </style>
+</head>
+
+<body>
+    <header class="main-header">
+        <div class="container d-flex justify-between align-center">
+            <a href="index.html" class="logo d-flex align-center">
+                <div class="logo-icon"><i class="fa-solid fa-capsules"></i></div>
+                <div class="logo-text">
+                    <h1>صيدلية أبو نور</h1>
+                </div>
+            </a>
+            <a href="index.html" class="btn btn-outline">العودة للرئيسية</a>
+        </div>
+    </header>
+
+    <section class="contact-page">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h1 class="text-3xl">تواصل معنا</h1>
+                <p class="text-muted">نحن هنا للإجابة على جميع استفساراتكم الصحية</p>
+            </div>
+
+            <div class="contact-grid">
+                <div class="contact-info-list">
+                    <div class="info-item">
+                        <i class="fa-solid fa-location-dot"></i>
+                        <div>
+                            <h3>العنوان</h3>
+                            <p>أبوكبير – المحطة – أمام مقلة السندباد، محافظة الشرقية</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <i class="fa-solid fa-phone"></i>
+                        <div>
+                            <h3>اتصل بنا</h3>
+                            <p>01068187197</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <i class="fa-solid fa-envelope"></i>
+                        <div>
+                            <h3>البريد الإلكتروني</h3>
+                            <p>info@abunour-pharmacy.com</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <i class="fa-solid fa-clock"></i>
+                        <div>
+                            <h3>ساعات العمل</h3>
+                            <p>مفتوح دائماً (24/7)</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-form-box">
+                    <h2 class="mb-4">أرسل لنا رسالة</h2>
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="الاسم بالكامل" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" class="form-control" placeholder="البريد الإلكتروني" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" class="form-control" placeholder="رقم الهاتف" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea class="form-control" rows="5" placeholder="كيف يمكننا مساعدتك؟"
+                                required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-full">إرسال الرسالة <i
+                                class="fa-solid fa-paper-plane"></i></button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('شكراً لتواصلك معنا! تم استلام رسالتك وسنرد عليك في أقرب وقت ممكن.');
+            e.target.reset();
+        });
+    </script>
+
+    <footer class="main-footer py-3 text-center bg-dark text-white">
+        <p>&copy; 2026 صيدلية أبو نور. جميع الحقوق محفوظة.</p>
+    </footer>
+</body>
+
+</html>

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تسجيل الدخول | صيدلية أبو نور</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .auth-wrapper {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: url('https://images.unsplash.com/photo-1586015555751-63bb77f4322a?q=80&w=2070&auto=format&fit=crop') no-repeat center center/cover;
+            position: relative;
+        }
+
+        .auth-wrapper::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(8px);
+        }
+
+        .auth-box {
+            background: var(--clr-bg-card);
+            padding: 3rem 2.5rem;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-xl);
+            width: 100%;
+            max-width: 450px;
+            position: relative;
+            z-index: 10;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            animation: fade-in-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        .auth-header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .auth-header i {
+            font-size: 3rem;
+            color: var(--clr-primary);
+            margin-bottom: 1rem;
+        }
+
+        .auth-header h2 {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+            color: var(--clr-heading);
+        }
+
+        .auth-header p {
+            color: var(--clr-text-light);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.9rem 1.2rem;
+            border: 1px solid var(--clr-border);
+            border-radius: var(--radius-sm);
+            background: var(--clr-bg-light);
+            color: var(--clr-text);
+            margin-bottom: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--clr-primary);
+            box-shadow: 0 0 0 4px rgba(0, 168, 89, 0.1);
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .btn-auth {
+            width: 100%;
+            padding: 1rem;
+            font-size: 1.1rem;
+            border-radius: var(--radius-sm);
+            margin-top: 1rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0.5rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .btn-auth:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 168, 89, 0.3);
+        }
+
+        .auth-footer {
+            margin-top: 2rem;
+            text-align: center;
+            font-size: 0.95rem;
+        }
+
+        .auth-footer a {
+            color: var(--clr-primary);
+            font-weight: 700;
+            text-decoration: underline;
+        }
+
+        body.dark-mode .auth-box {
+            background: rgba(18, 18, 18, 0.85);
+            border-color: rgba(255, 255, 255, 0.05);
+        }
+
+        body.dark-mode .form-control {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.1);
+        }
+    </style>
+</head>
+
+<body class="dark-mode"> <!-- Force dark mode for sleek auth page -->
+    <a href="index.html"
+        style="position:absolute; top:20px; right:20px; z-index:20; color:white; font-size:1.2rem; display:flex; gap:0.5rem; align-items:center;">
+        <i class="fa-solid fa-arrow-right"></i> العودة للمتجر
+    </a>
+    <div class="auth-wrapper">
+        <div class="auth-box glass-effect-heavy">
+            <div class="auth-header">
+                <i class="fa-solid fa-user-shield"></i>
+                <h2>أهلاً بك مجدداً</h2>
+                <p>سجل دخولك لمتابعة طلباتك ومحفوظاتك</p>
+            </div>
+            <form onsubmit="event.preventDefault(); window.location.href='account.html';">
+                <div>
+                    <label class="form-label">البريد الإلكتروني أو رقم الهاتف</label>
+                    <input type="text" class="form-control" placeholder="example@mail.com" required>
+                </div>
+                <div>
+                    <label class="form-label">كلمة المرور</label>
+                    <input type="password" class="form-control" placeholder="••••••••" required>
+                </div>
+                <div
+                    style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; font-size: 0.9rem;">
+                    <label style="display:flex; gap:0.5rem; align-items:center; cursor:pointer;"><input type="checkbox"
+                            accent-color="var(--clr-primary)"> تذكرني</label>
+                    <a href="#" style="color:var(--clr-text-light); text-decoration:underline;">نسيت كلمة المرور؟</a>
+                </div>
+                <button type="submit" class="btn btn-primary btn-auth"><i class="fa-solid fa-right-to-bracket"></i>
+                    تسجيل الدخول</button>
+            </form>
+            <div class="auth-footer">
+                <span class="text-muted">ليس لديك حساب؟</span> <a href="register.html">إنشاء حساب جديد</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

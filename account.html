@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>حسابي | صيدلية أبو نور</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .account-header {
+            background: linear-gradient(135deg, var(--clr-primary), var(--clr-secondary));
+            padding: 4rem 0 2rem;
+            color: white;
+            margin-bottom: 3rem;
+        }
+
+        .user-greeting {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .user-avatar {
+            width: 80px;
+            height: 80px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            backdrop-filter: blur(5px);
+        }
+
+        .user-greeting h1 {
+            margin: 0;
+            font-size: 2rem;
+            color: white;
+        }
+
+        .user-greeting p {
+            margin: 0;
+            opacity: 0.8;
+            font-size: 1rem;
+        }
+
+        .account-container {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        @media (max-width: 992px) {
+            .account-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Account Sidebar */
+        .account-sidebar {
+            background: var(--clr-bg-card);
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--clr-border);
+            overflow: hidden;
+            height: fit-content;
+        }
+
+        .account-nav {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .account-nav li a {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1.2rem 1.5rem;
+            color: var(--clr-text);
+            border-bottom: 1px solid var(--clr-border-light);
+            transition: var(--transition-fast);
+        }
+
+        .account-nav li:last-child a {
+            border-bottom: none;
+        }
+
+        .account-nav li a:hover,
+        .account-nav li a.active {
+            background: var(--clr-bg-light);
+            color: var(--clr-primary);
+            border-inline-start: 4px solid var(--clr-primary);
+        }
+
+        /* Account Content */
+        .account-content-box {
+            background: var(--clr-bg-card);
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--clr-border);
+            padding: 2rem;
+        }
+
+        .box-title {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--clr-border-light);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* Dashboard Stats */
+        .dash-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .dash-stats {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .dash-card {
+            padding: 1.5rem;
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--clr-border);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            transition: var(--transition-fast);
+        }
+
+        .dash-card:hover {
+            border-color: var(--clr-primary);
+            box-shadow: var(--shadow-sm);
+            transform: translateY(-3px);
+        }
+
+        .dash-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--clr-bg-light);
+            color: var(--clr-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        .dash-info h4 {
+            margin: 0 0 0.2rem 0;
+            font-size: 1.3rem;
+        }
+
+        .dash-info p {
+            margin: 0;
+            color: var(--clr-text-light);
+            font-size: 0.9rem;
+        }
+
+        /* Orders Table */
+        .user-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .user-table th,
+        .user-table td {
+            padding: 1rem;
+            text-align: right;
+            border-bottom: 1px solid var(--clr-border-light);
+            font-size: 0.95rem;
+        }
+
+        .user-table th {
+            color: var(--clr-text-light);
+            font-weight: 600;
+            background: var(--clr-bg-light);
+        }
+
+        .badge-status {
+            padding: 0.3rem 0.8rem;
+            border-radius: var(--radius-full);
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .status-shipping {
+            background: rgba(59, 130, 246, 0.1);
+            color: var(--clr-info);
+        }
+
+        .status-delivered {
+            background: rgba(16, 185, 129, 0.1);
+            color: var(--clr-success);
+        }
+
+        body.dark-mode .account-sidebar,
+        body.dark-mode .account-content-box {
+            background: var(--clr-bg-card);
+            border-color: var(--clr-border);
+        }
+
+        body.dark-mode .account-nav li a:hover,
+        body.dark-mode .account-nav li a.active {
+            background: var(--clr-bg-main);
+        }
+
+        body.dark-mode .user-table th {
+            background: var(--clr-bg-main);
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header class="main-header" style="border-bottom: 1px solid var(--clr-border);">
+        <div class="container d-flex justify-between align-center py-3">
+            <a href="index.html" class="logo d-flex align-center">
+                <div class="logo-icon"><i class="fa-solid fa-capsules"></i></div>
+                <div class="logo-text">
+                    <h1>صيدلية أبو نور</h1>
+                </div>
+            </a>
+            <div class="header-actions d-flex align-center gap-4">
+                <a href="shop.html" class="btn btn-outline" style="padding: 0.4rem 1rem; font-size: 0.9rem;"><i
+                        class="fa-solid fa-store"></i> المتجر</a>
+                <button id="theme-toggle" class="theme-btn" aria-label="Toggle Dark Mode"
+                    style="background:none; border:none; cursor:pointer;">
+                    <i class="fa-solid fa-moon"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <div class="account-header">
+        <div class="container user-greeting">
+            <div class="user-avatar"><i class="fa-regular fa-user"></i></div>
+            <div>
+                <h1>مرحباً بعودتك، محمود</h1>
+                <p>عضو منذ فبراير 2026 | رقم العميل: #CUST-9852</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="container account-container">
+        <!-- Sidebar -->
+        <aside class="account-sidebar glass-effect">
+            <ul class="account-nav">
+                <li><a href="#" class="active"><i class="fa-solid fa-grip"></i> لوحة التحكم</a></li>
+                <li><a href="#"><i class="fa-solid fa-box-open"></i> طلباتي</a></li>
+                <li><a href="#"><i class="fa-solid fa-heart"></i> قائمة المفضلة <span class="badge"
+                            style="position:static; margin-inline-start:auto;">2</span></a></li>
+                <li><a href="#"><i class="fa-solid fa-location-dot"></i> عناوين التوصيل</a></li>
+                <li><a href="#"><i class="fa-solid fa-gear"></i> إعدادات الحساب</a></li>
+                <li><a href="index.html" class="text-danger"><i class="fa-solid fa-right-from-bracket"></i> تسجيل
+                        الخروج</a></li>
+            </ul>
+        </aside>
+
+        <!-- Content -->
+        <main class="account-content">
+            <div class="account-content-box glass-effect mb-4">
+                <h2 class="box-title">نظرة عامة</h2>
+                <div class="dash-stats">
+                    <div class="dash-card slide-up">
+                        <div class="dash-icon"><i class="fa-solid fa-box"></i></div>
+                        <div class="dash-info">
+                            <h4>0</h4>
+                            <p>إجمالي الطلبات</p>
+                        </div>
+                    </div>
+                    <div class="dash-card slide-up" style="animation-delay: 0.1s;">
+                        <div class="dash-icon" style="color:var(--clr-info)"><i class="fa-solid fa-truck-fast"></i>
+                        </div>
+                        <div class="dash-info">
+                            <h4>0</h4>
+                            <p>طلبات قيد التوصيل</p>
+                        </div>
+                    </div>
+                    <div class="dash-card slide-up" style="animation-delay: 0.2s;">
+                        <div class="dash-icon" style="color:var(--clr-warning)"><i class="fa-solid fa-coins"></i></div>
+                        <div class="dash-info">
+                            <h4>0</h4>
+                            <p>نقاط المكافآت</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="account-content-box glass-effect">
+                <h2 class="box-title">أحدث الطلبات</h2>
+                <div style="overflow-x: auto;">
+                    <table class="user-table">
+                        <thead>
+                            <tr>
+                                <th>رقم الطلب</th>
+                                <th>التاريخ</th>
+                                <th>المنتجات</th>
+                                <th>الإجمالي</th>
+                                <th>الحالة</th>
+                                <th>الإجراء</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td colspan="6" style="text-align: center; padding: 3rem;">
+                                    <i class="fa-solid fa-box-open mb-3"
+                                        style="font-size: 3rem; color: var(--clr-border);"></i>
+                                    <p class="text-muted">لم تقم بإجراء أي طلبات حتى الآن. ابدأ بتصفح المتجر!</p>
+                                    <a href="shop.html" class="btn btn-primary mt-2">تصفح المنتجات</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="text-center mt-4">
+                    <a href="#" class="btn btn-primary">عرض جميع الطلبات <i
+                            class="fa-solid fa-arrow-left ms-2 me-0"></i></a>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- JS -->
+    <script>
+        // Dark Mode Logic
+        const themeBtn = document.getElementById('theme-toggle');
+        const themeIcon = themeBtn.querySelector('i');
+        const body = document.body;
+        const savedTheme = localStorage.getItem('abunour_theme');
+        if (savedTheme === 'dark') {
+            body.classList.add('dark-mode');
+            themeIcon.classList.replace('fa-moon', 'fa-sun');
+        }
+        themeBtn.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+            if (body.classList.contains('dark-mode')) {
+                localStorage.setItem('abunour_theme', 'dark');
+                themeIcon.classList.replace('fa-moon', 'fa-sun');
+            } else {
+                localStorage.setItem('abunour_theme', 'light');
+                themeIcon.classList.replace('fa-sun', 'fa-moon');
+            }
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,1178 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+  <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+  <meta name="description"
+    content="صيدلية أبو نور - أسرع خدمة توصيل أدوية ومستلزمات طبية في أبوكبير. استشارات طبية فورية، منتجات أصلية 100%، وعروض يومية حصرية. اطلب دواءك الآن ليصلك في دقائق.">
+  <meta name="keywords"
+    content="صيدلية أبو نور, صيدلية أبوكبير, توصيل أدوية, مستلزمات طبية, العناية بالبشرة, فيتامينات, صيدلية أونلاين, منتجات طبية أصلية, استشارة صيدلانية">
+  <meta name="author" content="صيدلية أبو نور">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://abunour-pharmacy.com">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://abunour-pharmacy.com">
+  <meta property="og:title" content="صيدلية أبو نور | رعايتك الصحية بجودة عالمية في قلب أبوكبير">
+  <meta property="og:description"
+    content="اطلب أدويتك ومستلزمات العناية الشخصية من صيدلية أبو نور. توصيل سريع، استشارات صيدلانية، وأفضل الأسعار.">
+  <meta property="og:image" content="https://abunour-pharmacy.com/images/og-main.jpg">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://abunour-pharmacy.com">
+  <meta property="twitter:title" content="صيدلية أبو نور - وجهتك الصحية الأولى">
+  <meta property="twitter:description"
+    content="أفضل العروض والخدمات الصيدلانية في أبوكبير. توصيل لباب البيت واستشارة مجانية.">
+  <meta property="twitter:image" content="https://abunour-pharmacy.com/images/og-main.jpg">
+
+  <title>صيدلية أبو نور | الريادة في الرعاية الصحية وخدمات التوصيل</title>
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Pharmacy",
+    "name": "صيدلية أبو نور",
+    "url": "https://abunour-pharmacy.com",
+    "telephone": "01068187197",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "أبوكبير",
+      "addressRegion": "الشرقية",
+      "addressCountry": "EG"
+    }
+  }
+  </script>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&family=Poppins:wght@300;400;600;700&display=swap"
+    rel="stylesheet">
+
+  <!-- FontAwesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- Swiper CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+  <link rel="stylesheet" href="admin.html">
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+  <!-- css -->
+
+  <!-- Top Bar -->
+  <div class="top-bar">
+    <div class="container d-flex justify-between align-center">
+      <div class="contact-info">
+        <a href="tel:01068187197"><i class="fa-solid fa-phone"></i> 01068187197</a>
+        <span><i class="fa-solid fa-location-dot"></i> أبوكبير – المحطة – أمام مقلة السندباد</span>
+      </div>
+      <div class="top-links d-flex align-center">
+        <a href="#"><i class="fa-brands fa-facebook"></i></a>
+        <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
+        <button id="theme-toggle" class="theme-btn" aria-label="Toggle Dark Mode">
+          <i class="fa-solid fa-moon"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Header -->
+  <header class="main-header sticky" id="header">
+    <div class="container d-flex justify-between align-center">
+      <!-- Logo -->
+      <a href="index.html" class="logo d-flex align-center">
+        <div class="logo-icon"><i class="fa-solid fa-capsules"></i></div>
+        <div class="logo-text">
+          <h1>صيدلية أبو نور</h1>
+          <p>رعايتك الصحية، أولويتنا</p>
+        </div>
+      </a>
+
+      <!-- Live Search -->
+      <div class="search-container" style="position: relative;">
+        <form action="#" class="search-form" onsubmit="event.preventDefault();">
+          <input type="text" placeholder="ابحث عن دواء، فيتامين، أو مستلزمات طبية..." class="search-input"
+            id="live-search" autocomplete="off">
+          <button type="submit" class="search-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
+        </form>
+        <div class="search-results glass-effect" id="search-results"
+          style="display:none; position:absolute; top:110%; right:0; width:100%; max-height:400px; overflow-y:auto; background:var(--clr-bg-card); z-index:1000; border-radius:var(--radius-md); box-shadow:var(--shadow-lg); border:1px solid var(--clr-border);">
+        </div>
+      </div>
+
+      <!-- User Actions -->
+      <div class="header-actions d-flex align-center">
+        <button id="mobile-menu-btn" class="action-btn" style="background:none; border:none; font-size: 1.5rem;">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+        <a href="javascript:void(0)" class="action-btn" title="حسابي" id="login-modal-trigger">
+          <i class="fa-regular fa-user"></i>
+          <span class="action-text">دخول</span>
+        </a>
+        <a href="#" class="action-btn cart-btn" title="السلة">
+          <i class="fa-solid fa-cart-shopping"></i>
+          <span class="badge cart-badge">3</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Navigation -->
+  <nav class="main-nav">
+    <div class="container">
+      <ul class="nav-links d-flex">
+        <li><a href="index.html" class="active">الرئيسية</a></li>
+        <li><a href="shop.html">الأدوية</a></li>
+        <li><a href="shop.html?cat=vitamins">الفيتامينات والمكملات</a></li>
+        <li><a href="shop.html?cat=skin">العناية بالبشرة</a></li>
+        <li><a href="shop.html?cat=hair">العناية بالشعر</a></li>
+        <li><a href="shop.html?cat=baby">مستلزمات الأطفال</a></li>
+        <li><a href="shop.html?cat=devices">الأجهزة الطبية</a></li>
+        <li class="deals-link"><a href="shop.html?deals=true"><i class="fa-solid fa-bolt"></i> عروض اليوم</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero Slider -->
+  <section class="hero-section">
+    <div class="swiper hero-swiper">
+      <div class="swiper-wrapper" id="hero-swiper-wrapper">
+        <!-- Ramadan Special Slide -->
+        <div class="swiper-slide hero-slide slide-ramadan"
+          style="background: linear-gradient(90deg, rgba(0, 77, 64, 0.9) 0%, rgba(0, 168, 89, 0.3) 100%), url('https://images.unsplash.com/photo-1576489922094-ca1390453503?w=1200&q=80'); background-size: cover; background-position: center;">
+          <div class="container h-full d-flex align-center">
+            <div class="hero-content fade-up" style="color: white !important;">
+              <span class="badge"
+                style="background: var(--clr-warning); color: var(--clr-secondary); padding: 0.5rem 1rem; border-radius: var(--radius-sm); font-weight: 800; margin-bottom: 1.5rem; display: inline-block;">خصم
+                حصري 50%</span>
+              <h2 style="color: white !important; font-size: 3.5rem; text-shadow: 2px 2px 10px rgba(0,0,0,0.3);">بمناسبة
+                شهر رمضان المبارك</h2>
+              <p style="color: rgba(255,255,255,0.9) !important; font-size: 1.3rem;">نقدم لكم أقوى العروض على
+                الفيتامينات ومنتجات العناية بالبشرة طوال الشهر الكريم.</p>
+              <div class="d-flex gap-3">
+                <a href="#home-dynamic-products" class="btn btn-primary"
+                  style="background: var(--clr-warning); color: var(--clr-secondary); border: none;">تسوق الآن <i
+                    class="fa-solid fa-cart-shopping"></i></a>
+                <a href="tel:01068187197" class="btn btn-outline" style="border-color: white; color: white;">اتصل بنا <i
+                    class="fa-solid fa-phone"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Default Slide 1 -->
+        <div class="swiper-slide hero-slide slide-1">
+          <div class="container h-full d-flex align-center">
+            <div class="hero-content fade-up">
+              <span class="badge-discount">خصم 50%</span>
+              <h2>عناية متكاملة<br>لبشرتك وشعرك</h2>
+              <p>أفضل منتجات العناية بالبشرة والشعر من الماركات العالمية بأسعار تنافسية.</p>
+              <a href="#" class="btn btn-primary">تسوق الآن <i class="fa-solid fa-arrow-left"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Pagination & Navigation -->
+      <div class="swiper-pagination"></div>
+      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="features-section py-5">
+    <div class="container">
+      <div class="features-grid">
+        <div class="feature-card glass-effect hover-up">
+          <div class="feature-icon"><i class="fa-solid fa-truck-fast"></i></div>
+          <div class="feature-info">
+            <h3>توصيل سريع</h3>
+            <p>داخل أبوكبير في دقائق</p>
+          </div>
+        </div>
+        <div class="feature-card glass-effect hover-up">
+          <div class="feature-icon"><i class="fa-solid fa-shield-halved"></i></div>
+          <div class="feature-info">
+            <h3>منتجات أصلية 100%</h3>
+            <p>من الوكلاء المعتمدين</p>
+          </div>
+        </div>
+        <div class="feature-card glass-effect hover-up">
+          <div class="feature-icon"><i class="fa-solid fa-headset"></i></div>
+          <div class="feature-info">
+            <h3>دعم صيدلي</h3>
+            <p>استشارات طبية مجانية</p>
+          </div>
+        </div>
+        <div class="feature-card glass-effect hover-up">
+          <div class="feature-icon"><i class="fa-solid fa-percent"></i></div>
+          <div class="feature-info">
+            <h3>عروض حصرية</h3>
+            <p>خصومات يومية مستمرة</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Video Ads Section -->
+  <section class="video-ads-section py-5" id="video-ads-container" style="display: none;">
+    <div class="container">
+      <div class="section-header text-center mb-5">
+        <h2 class="section-title">إعلانات مرئية</h2>
+        <p class="text-muted">شاهد أحدث العروض والمنتجات الحصرية</p>
+      </div>
+      <div class="video-grid" id="video-ads-grid"
+        style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+        <!-- Videos will be loaded here -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Categories Section -->
+  <section class="categories-section py-5 bg-light">
+    <div class="container">
+      <div class="section-header d-flex justify-between align-center mb-4">
+        <h2 class="section-title">تسوق حسب القسم</h2>
+        <a href="shop.html" class="view-all">عرض الكل <i class="fa-solid fa-angle-left"></i></a>
+      </div>
+      <div class="categories-grid">
+        <a href="shop.html?cat=أدوية" class="category-card hover-up">
+          <div class="cat-icon"><i class="fa-solid fa-pills"></i></div>
+          <h3>أدوية</h3>
+          <span>تصفح الآن</span>
+        </a>
+        <a href="shop.html?cat=فيتامينات" class="category-card hover-up">
+          <div class="cat-icon"><i class="fa-solid fa-bottle-droplet"></i></div>
+          <h3>فيتامينات</h3>
+          <span>تصفح الآن</span>
+        </a>
+        <a href="shop.html?cat=عناية بالبشرة" class="category-card hover-up">
+          <div class="cat-icon"><i class="fa-solid fa-spa"></i></div>
+          <h3>عناية بالبشرة</h3>
+          <span>تصفح الآن</span>
+        </a>
+        <a href="shop.html?cat=مستلزمات أطفال" class="category-card hover-up">
+          <div class="cat-icon"><i class="fa-solid fa-baby-carriage"></i></div>
+          <h3>مستلزمات أطفال</h3>
+          <span>تصفح الآن</span>
+        </a>
+        <a href="shop.html?cat=أجهزة طبية" class="category-card hover-up">
+          <div class="cat-icon"><i class="fa-solid fa-stethoscope"></i></div>
+          <h3>أجهزة طبية</h3>
+          <span>تصفح الآن</span>
+        </a>
+        <a href="shop.html?cat=عناية بالشعر" class="category-card hover-up">
+          <div class="cat-icon"><i class="fa-solid fa-spray-can"></i></div>
+          <h3>عناية بالشعر</h3>
+          <span>تصفح الآن</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Flash Deals Section -->
+  <section class="flash-deals-section py-5">
+    <div class="container">
+      <div class="section-header d-flex justify-between align-center mb-4">
+        <div class="d-flex align-center gap-3">
+          <h2 class="section-title"><i class="fa-solid fa-bolt text-warning"></i> عروض اليوم المذهلة</h2>
+          <div class="countdown-timer d-flex gap-2" id="flash-countdown">
+            <div class="time-box"><span>05</span><small>ساعات</small></div>
+            <div class="time-box"><span>45</span><small>دقائق</small></div>
+            <div class="time-box"><span>30</span><small>ثواني</small></div>
+          </div>
+        </div>
+        <a href="#" class="view-all">كل العروض <i class="fa-solid fa-angle-left"></i></a>
+      </div>
+
+      <div class="swiper product-swiper">
+        <div class="swiper-wrapper" id="flash-deals-wrapper">
+          <!-- Flash deals will be loaded dynamically from localStorage if any -->
+          <div class="swiper-slide">
+            <div class="text-center py-5 w-full">
+              <p class="text-muted">ترقبوا أقوى العروض قريباً...</p>
+            </div>
+          </div>
+        </div>
+        <!-- Pagination -->
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Best Sellers Section -->
+  <section class="best-sellers py-5 bg-light">
+    <div class="container">
+      <div class="section-header text-center mb-5">
+        <h2 class="section-title">الأكثر مبيعاً</h2>
+        <p class="text-muted">المنتجات المفضلة لدى عملائنا</p>
+      </div>
+
+      <div class="products-grid-4" id="home-dynamic-products">
+        <!-- Products will be loaded dynamically via Javascript -->
+        <!-- Product grid items (duplicate card structure from above without swiper classes) -->
+        <!-- Best seller 1 -->
+        <div class="products-grid-4" id="home-dynamic-products">
+          <!-- Products will be loaded dynamically via Javascript from Admin -->
+          <div class="text-center py-5 w-full" style="grid-column: 1 / -1;">
+            <p class="text-muted">نعمل على توفير أفضل المنتجات لكم...</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="testimonials py-5">
+    <div class="container">
+      <div class="section-header text-center mb-5">
+        <h2 class="section-title">آراء عملائنا</h2>
+        <p class="text-muted">نعتز بثقتكم بنا، ونسعى دائماً لتقديم الأفضل</p>
+      </div>
+      <div class="swiper testimonial-swiper">
+        <div class="swiper-wrapper">
+          <!-- Review 1 -->
+          <div class="swiper-slide">
+            <div class="testimonial-card glass-effect">
+              <div class="quote-icon"><i class="fa-solid fa-quote-right"></i></div>
+              <p class="review-text">"خدمة ممتازة وسريعة جداً. طلبت الأدوية ووصلتني لباب البيت في أقل من نصف ساعة.
+                التطبيق سهل والتغليف ممتاز والصيادلة متعاونين جداً. شكراً صيدلية أبو نور!"</p>
+              <div class="reviewer-info d-flex align-center">
+                <div class="avatar">أ</div>
+                <div>
+                  <h4 class="reviewer-name">أحمد محمود</h4>
+                  <div class="product-rating">
+                    <i class="fa-solid fa-star text-warning"></i>
+                    <i class="fa-solid fa-star text-warning"></i>
+                    <i class="fa-solid fa-star text-warning"></i>
+                    <i class="fa-solid fa-star text-warning"></i>
+                    <i class="fa-solid fa-star text-warning"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Review 2 -->
+          <div class="swiper-slide">
+            <div class="testimonial-card glass-effect">
+              <div class="quote-icon"><i class="fa-solid fa-quote-right"></i></div>
+              <p class="review-text">"أفضل صيدلية في أبوكبير بلا منازع. المنتجات أصلية وتواريخ الصلاحية حديثة. أعجبني
+                جداً قسم العناية بالبشرة وتوفر الماركات العالمية."</p>
+              <div class="reviewer-info d-flex align-center">
+                <div class="avatar bg-primary text-white">س</div>
+                <div>
+                  <h4 class="reviewer-name">سارة محمد</h4>
+                  <div class="product-rating">
+                    <i class="fa-solid fa-star text-warning"></i>
+                    <i class="fa-solid fa-star text-warning"></i>
+                    <i class="fa-solid fa-star text-warning"></i>
+                    <i class="fa-solid fa-star text-warning"></i>
+                    <i class="fa-regular fa-star text-warning"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Review 3 -->
+          <div class="swiper-slide">
+            <div class="testimonial-card glass-effect">
+              <div class="quote-icon"><i class="fa-solid fa-quote-right"></i></div>
+              <p class="review-text">"أسعارهم منافسة وفي عروض مستمرة. بتابع دايماً عروض فلاش ديلز وبستفيد منها كتير.
+                خدمة العملاء ودودة ومحترفة."</p>
+              <div class="reviewer-info d-flex align-center">
+                <div class="avatar bg-secondary text-white">م</div>
+                <div>
+                  <h4 class="reviewer-name">محمود علي</h4>
+                  <div class="product-rating">
+                    <i class="fa-solid fa-star text-warning"></i>
+                    <i class="fa-solid fa-star text-warning"></i>
+                    <i class="fa-solid fa-star text-warning"></i>
+                    <i class="fa-solid fa-star text-warning"></i>
+                    <i class="fa-solid fa-star text-warning"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="swiper-pagination"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter & Download App -->
+  <section class="newsletter-app py-5 bg-primary text-white">
+    <div class="container row align-center">
+      <div class="col-md-6 mb-4 mb-md-0">
+        <h2>انضم إلى نشرتنا البريدية</h2>
+        <p class="mb-4">احصل على خصم 10% على أول طلب لك عند التسجيل، وكن أول من يعلم بأحدث العروض!</p>
+        <form class="newsletter-form flex">
+          <input type="email" placeholder="أدخل بريدك الإلكتروني" required>
+          <button type="submit" class="btn btn-dark">اشترك الآن</button>
+        </form>
+      </div>
+      <div class="col-md-6 text-center">
+        <h2>حمل تطبيق صيدلية أبو نور</h2>
+        <p class="mb-4">تسوق بسهولة، تتبع طلباتك، واستفد من العروض الحصرية على التطبيق</p>
+        <div class="app-links d-flex justify-center gap-3">
+          <a href="#" class="btn btn-light d-flex align-center gap-2">
+            <i class="fa-brands fa-apple text-dark text-xl"></i>
+            <div class="text-right">
+              <small class="d-block text-muted">حمله من</small>
+              <strong class="text-dark">App Store</strong>
+            </div>
+          </a>
+          <a href="#" class="btn btn-light d-flex align-center gap-2">
+            <i class="fa-brands fa-google-play text-dark text-xl"></i>
+            <div class="text-right">
+              <small class="d-block text-muted">اكتشفه على</small>
+              <strong class="text-dark">Google Play</strong>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="main-footer">
+    <div class="footer-top py-5">
+      <div class="container grid-footer">
+        <!-- Info -->
+        <div class="footer-widget">
+          <a href="#" class="logo d-flex align-center w-text mb-4">
+            <div class="logo-icon text-primary"><i class="fa-solid fa-capsules"></i></div>
+            <div class="logo-text">
+              <h2 class="text-white">صيدلية أبو نور</h2>
+            </div>
+          </a>
+          <p class="mb-4 text-gray">منصتك الرقمية المتكاملة لجميع احتياجاتك الطبية ومنتجات العناية بالصحة والجمال.</p>
+          <ul class="contact-list">
+            <li><i class="fa-solid fa-location-dot"></i> أبوكبير – المحطة – أمام مقلة السندباد</li>
+            <li><i class="fa-solid fa-phone"></i> 01068187197</li>
+            <li><i class="fa-solid fa-envelope"></i> info@abunour-pharmacy.com</li>
+            <li><i class="fa-solid fa-clock"></i> نعمل 24 ساعة طوال أيام الأسبوع</li>
+          </ul>
+        </div>
+
+        <!-- Links 1 -->
+        <div class="footer-widget">
+          <h3 class="widget-title">روابط هامة</h3>
+          <ul class="footer-links">
+            <li><a href="about.html">من نحن</a></li>
+            <li><a href="privacy.html">سياسة الخصوصية</a></li>
+            <li><a href="terms.html">شروط الاستخدام</a></li>
+            <li><a href="return-policy.html">سياسة الاسترجاع والاستبدال</a></li>
+            <li><a href="faq.html">الأسئلة الشائعة</a></li>
+            <li><a href="contact.html">تواصل معنا</a></li>
+          </ul>
+        </div>
+
+        <!-- Links 2 -->
+        <div class="footer-widget">
+          <h3 class="widget-title">الأقسام</h3>
+          <ul class="footer-links">
+            <li><a href="shop.html?cat=أدوية">الأدوية والعلاجات</a></li>
+            <li><a href="shop.html?cat=فيتامينات">الفيتامينات والمكملات</a></li>
+            <li><a href="shop.html?cat=عناية بالبشرة">العناية بالبشرة والشعر</a></li>
+            <li><a href="shop.html?cat=مستلزمات أطفال">مستلزمات الأم والطفل</a></li>
+            <li><a href="shop.html?cat=أجهزة طبية">الأجهزة والمعدات الطبية</a></li>
+            <li><a href="shop.html?deals=true">العروض والتخفيضات</a></li>
+          </ul>
+        </div>
+
+        <!-- Map / Quick Actions -->
+        <div class="footer-widget">
+          <h3 class="widget-title">موقعنا</h3>
+          <div class="map-container mb-3 glass-effect"
+            style="height: 150px; border-radius: 10px; display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,0.05);">
+            <i class="fa-solid fa-map-location-dot text-4xl text-gray"></i>
+          </div>
+          <div class="social-links d-flex gap-2">
+            <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#"><i class="fa-brands fa-twitter"></i></a>
+            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom py-3">
+      <div class="container d-flex justify-between align-center mobile-col">
+        <p class="mb-0 text-gray">جميع الحقوق محفوظة &copy; 2026 لصيدلية أبو نور. تم التطوير بواجهة احترافية.</p>
+        <div class="payment-methods">
+          <i class="fa-brands fa-cc-visa"></i>
+          <i class="fa-brands fa-cc-mastercard"></i>
+          <i class="fa-solid fa-money-bill-wave"></i> الدفع عند الاستلام
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Cart Sidebar (Hidden by default) -->
+  <div class="cart-overlay"></div>
+  <div class="cart-sidebar glass-effect-heavy">
+    <div class="cart-header d-flex justify-between align-center">
+      <h3>سلة المشتريات (3)</h3>
+      <button class="close-cart"><i class="fa-solid fa-times"></i></button>
+    </div>
+    <div class="cart-items">
+      <!-- Item 1 -->
+      <div class="cart-item d-flex">
+        <div class="cart-item-img">
+          <div class="img-placeholder-small">فيتامين</div>
+        </div>
+        <div class="cart-item-info">
+          <h4>فيتامين سي 1000مج مع زنك</h4>
+          <div class="cart-item-price">140 ج.م</div>
+          <div class="quantity-control d-flex">
+            <button class="qty-btn minus">-</button>
+            <input type="text" value="1" readonly>
+            <button class="qty-btn plus">+</button>
+          </div>
+        </div>
+        <button class="remove-item"><i class="fa-solid fa-trash"></i></button>
+      </div>
+      <!-- Item 2 -->
+      <div class="cart-item d-flex">
+        <div class="cart-item-img">
+          <div class="img-placeholder-small">لاروش</div>
+        </div>
+        <div class="cart-item-info">
+          <h4>لاروش بوزيه إيفاكلار جل غسول</h4>
+          <div class="cart-item-price">550 ج.م</div>
+          <div class="quantity-control d-flex">
+            <button class="qty-btn minus">-</button>
+            <input type="text" value="1" readonly>
+            <button class="qty-btn plus">+</button>
+          </div>
+        </div>
+        <button class="remove-item"><i class="fa-solid fa-trash"></i></button>
+      </div>
+      <!-- Item 3 -->
+      <div class="cart-item d-flex">
+        <div class="cart-item-img">
+          <div class="img-placeholder-small">بنادول</div>
+        </div>
+        <div class="cart-item-info">
+          <h4>بنادول اكسترا الأحمر 24 قرص</h4>
+          <div class="cart-item-price">45 ج.م</div>
+          <div class="quantity-control d-flex">
+            <button class="qty-btn minus">-</button>
+            <input type="text" value="2" readonly>
+            <button class="qty-btn plus">+</button>
+          </div>
+        </div>
+        <button class="remove-item"><i class="fa-solid fa-trash"></i></button>
+      </div>
+    </div>
+    <div class="cart-footer">
+      <div class="cart-total d-flex justify-between mb-3">
+        <strong>الإجمالي:</strong>
+        <strong class="text-primary total-price">780 ج.م</strong>
+      </div>
+      <a href="checkout.html" class="btn btn-primary w-full mb-2">إتمام الطلب <i class="fa-solid fa-arrow-left"></i></a>
+      <a href="shop.html" class="btn btn-outline w-full">عرض السلة</a>
+    </div>
+  </div>
+
+  <!-- Live Pharmacy Chat Widget -->
+  <div class="chat-widget">
+    <div class="chat-window" id="chatWindow">
+      <div class="chat-header">
+        <div class="doctor-profile">
+          <div class="doctor-avatar">
+            <i class="fa-solid fa-user-md"></i>
+            <span class="online-pulse"></span>
+          </div>
+          <div class="doctor-info">
+            <h4 style="margin: 0; font-size: 1rem; color: white;">د. أحمد (مساعد ذكي)</h4>
+            <small style="opacity: 0.9; color: #4caf50; font-weight: bold;">متصل الآن • جاهز للرد</small>
+          </div>
+        </div>
+        <div class="d-flex gap-2">
+          <button class="btn text-white" id="closeChat" style="padding:0; min-width:auto;"><i
+              class="fa-solid fa-times"></i></button>
+        </div>
+      </div>
+
+      <div class="chat-messages" id="chatMessages">
+        <div class="msg msg-bot">
+          مرحباً بك في صيدلية أبو نور الذكية 💊 أنا الدكتور أحمد، مساعدك الطبي الاحترافي المدعوم بالذكاء الاصطناعي. كيف
+          يمكنني مساعدتك اليوم؟
+        </div>
+      </div>
+
+      <!-- Typing Indicator -->
+      <div id="chatTyping" class="typing-indicator" style="display: none; margin: 0 20px 15px;">
+        <span></span><span></span><span></span>
+      </div>
+
+      <!-- Professional Suggestion Chips -->
+      <div class="chat-suggestions" id="chatSuggestions">
+        <button class="chip" onclick="handleChatSuggestion('صداع')"><i class="fa-solid fa-head-side-virus"></i>
+          صداع</button>
+        <button class="chip" onclick="handleChatSuggestion('كحة')"><i class="fa-solid fa-lungs"></i> كحة</button>
+        <button class="chip" onclick="handleChatSuggestion('حموضة')"><i class="fa-solid fa-fire-flame-curved"></i>
+          حموضة</button>
+        <button class="chip" onclick="handleChatSuggestion('إمساك')"><i class="fa-solid fa-toilet"></i> إمساك</button>
+      </div>
+
+      <form class="chat-input-area" id="chatForm">
+        <button type="button" class="voice-btn"
+          style="border:none; background:none; color:var(--clr-primary); font-size: 1.2rem; cursor:pointer;"><i
+            class="fa-solid fa-microphone"></i></button>
+        <input type="text" id="chatInputBar" placeholder="اكتب حالتك الصحية هنا..." autocomplete="off" required>
+        <button type="submit" class="send-chat-btn"><i class="fa-solid fa-paper-plane"></i></button>
+      </form>
+    </div>
+    <div class="chat-toggle pulse-btn" id="openChat" title="استشارة طبية فورية">
+      <i class="fa-solid fa-comment-medical"></i>
+    </div>
+  </div>
+
+  <!-- UltraProMax: Live Social Proof Notification -->
+  <div id="live-notification" class="live-notif glass-effect">
+    <div class="notif-icon"><i class="fa-solid fa-shopping-bag"></i></div>
+    <div class="notif-content">
+      <p id="notif-text">شخص ما اشترى بنادول الآن في أبوكبير</p>
+      <small>منذ دقيقة واحدة</small>
+    </div>
+  </div>
+
+  <style>
+    .live-notif {
+      position: fixed;
+      bottom: 100px;
+      right: 30px;
+      background: white;
+      padding: 12px 20px;
+      border-radius: 15px;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      transform: translateX(150%);
+      transition: all 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+      z-index: 999;
+      border-right: 4px solid var(--clr-primary);
+    }
+
+    .live-notif.show {
+      transform: translateX(0);
+    }
+
+    .notif-icon {
+      color: var(--clr-primary);
+      font-size: 1.5rem;
+    }
+
+    .notif-content p {
+      margin: 0;
+      font-weight: 700;
+      font-size: 0.9rem;
+    }
+
+    .notif-content small {
+      color: var(--clr-text-light);
+    }
+  </style>
+  <!-- Health Tips Section -->
+  <section class="health-tips py-5 bg-white">
+    <div class="container">
+      <div class="section-header text-center mb-5">
+        <h2 class="section-title">نصائح ومعلومات طبية</h2>
+        <p class="text-muted">نحن نهتم بصحتك، اقرأ آخر مقالاتنا التعليمية</p>
+      </div>
+      <div class="health-tips-grid">
+        <article class="tip-card hover-up">
+          <div class="tip-img"
+            style="background-image: url('https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=500&q=80');">
+          </div>
+          <div class="tip-content">
+            <span class="badge mb-2" style="background: var(--clr-primary-light); color: var(--clr-primary);">صحة
+              عامة</span>
+            <h3>كيف تقوي مناعتك في الشتاء؟</h3>
+            <p class="text-muted">تعرف على أهم الأطعمة والفيتامينات التي تساعدك على مواجهة نزلات البرد...</p>
+            <a href="#" class="text-primary font-bold">اقرأ المزيد <i class="fa-solid fa-arrow-left"></i></a>
+          </div>
+        </article>
+        <article class="tip-card hover-up">
+          <div class="tip-img"
+            style="background-image: url('https://images.unsplash.com/photo-1512290923902-8a9f81dc2069?w=500&q=80');">
+          </div>
+          <div class="tip-content">
+            <span class="badge mb-2" style="background: #e0f2fe; color: #0369a1;">عناية بالبشرة</span>
+            <h3>الروتين اليومي للبشرة الدهنية</h3>
+            <p class="text-muted">خطوات بسيطة للحفاظ على نضارة بشرتك والتحكم في الإفرازات الدهنية للوجه...</p>
+            <a href="#" class="text-primary font-bold">اقرأ المزيد <i class="fa-solid fa-arrow-left"></i></a>
+          </div>
+        </article>
+        <article class="tip-card hover-up">
+          <div class="tip-img"
+            style="background-image: url('https://images.unsplash.com/photo-1471864190281-a93a3070b6de?w=500&q=80');">
+          </div>
+          <div class="tip-content">
+            <span class="badge mb-2" style="background: #fef3c7; color: #92400e;">أدوية</span>
+            <h3>أخطاء شائعة عند تناول المسكنات</h3>
+            <p class="text-muted">نوضح لك الطريقة الصحيحة لتناول الأدوية لتجنب الآثار الجانبية على المعدة والكلى...</p>
+            <a href="#" class="text-primary font-bold">اقرأ المزيد <i class="fa-solid fa-arrow-left"></i></a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- WhatsApp Floating Button -->
+  <a href="https://wa.me/201068187197" class="whatsapp-float pulse-btn" target="_blank" title="تواصل معنا عبر واتساب">
+    <i class="fa-brands fa-whatsapp"></i>
+  </a>
+
+  <!-- Notification Toast -->
+  <div id="notification-toast" class="toast">
+    <i class="fa-solid fa-check-circle"></i>
+    <span id="toast-message">تمت إضافة المنتج للسلة بنجاح!</span>
+  </div>
+
+  <style>
+    /* Premium Additions */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 30px;
+      left: 30px;
+      width: 60px;
+      height: 60px;
+      background-color: #25d366;
+      color: #FFF;
+      border-radius: 50px;
+      text-align: center;
+      font-size: 35px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+    }
+
+    .whatsapp-float:hover {
+      transform: scale(1.1) rotate(10deg);
+      background-color: #128c7e;
+    }
+
+    .toast {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: var(--clr-secondary);
+      color: white;
+      padding: 1rem 2rem;
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: var(--shadow-lg);
+      transform: translateY(150%);
+      transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      z-index: 9999;
+    }
+
+    .toast.show {
+      transform: translateY(0);
+    }
+
+    .health-tips-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+
+    .tip-card {
+      background: var(--clr-bg-card);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.3s ease;
+    }
+
+    .tip-card:hover {
+      rotate: -1deg;
+      transform: translateY(-5px);
+    }
+
+    .tip-img {
+      height: 180px;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .tip-content {
+      padding: 1.5rem;
+    }
+
+    /* Chat Suggestions */
+    .chat-suggestions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      padding: 10px 15px;
+      background: var(--clr-bg-light);
+      border-top: 1px solid var(--clr-border-light);
+    }
+
+    .chip {
+      background: white;
+      border: 1px solid var(--clr-primary);
+      color: var(--clr-primary);
+      padding: 5px 12px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      transition: all 0.2s;
+      cursor: pointer;
+    }
+
+    .chip:hover {
+      background: var(--clr-primary);
+      color: white;
+    }
+  </style>
+
+  </div>
+
+  <!-- Login/Register Modal -->
+  <div class="auth-overlay" id="authOverlay"></div>
+  <div class="auth-modal glass-effect-heavy" id="authModal">
+    <button class="close-auth" id="closeAuth"><i class="fa-solid fa-times"></i></button>
+    <div class="auth-header text-center">
+      <div class="auth-logo mb-3"><i class="fa-solid fa-capsules"></i></div>
+      <h2 id="authTitle">تسجيل حساب جديد</h2>
+      <p id="authSubtitle">انضم لعائلة صيدلية أبو نور واحصل على عروض حصرية</p>
+    </div>
+
+    <div class="auth-tabs d-flex mb-4">
+      <button class="auth-tab active" data-tab="register">مستخدم جديد</button>
+      <button class="auth-tab" data-tab="login">تسجيل دخول</button>
+    </div>
+
+    <form id="registerForm">
+      <div class="form-group mb-3">
+        <label class="form-label">الاسم بالكامل</label>
+        <div class="input-with-icon">
+          <i class="fa-solid fa-user"></i>
+          <input type="text" id="regName" class="form-control" placeholder="أدخل اسمك الثلاثي" required>
+        </div>
+      </div>
+      <div class="form-group mb-3">
+        <label class="form-label">رقم الهاتف</label>
+        <div class="input-with-icon">
+          <i class="fa-solid fa-phone"></i>
+          <input type="tel" id="regPhone" class="form-control" placeholder="01xxxxxxxxx" required>
+        </div>
+      </div>
+      <div class="form-group mb-4">
+        <label class="form-label">كلمة المرور</label>
+        <div class="input-with-icon">
+          <i class="fa-solid fa-lock"></i>
+          <input type="password" id="regPass" class="form-control" placeholder="********" required>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary w-full py-3 mb-3">تأكيد التسجيل</button>
+      <p class="text-center text-muted small">بالمتابعة، أنت توافق على شروط الاستخدام وسياسة الخصوصية</p>
+    </form>
+
+    <form id="loginForm" style="display: none;">
+      <div class="form-group mb-3">
+        <label class="form-label">رقم الهاتف</label>
+        <div class="input-with-icon">
+          <i class="fa-solid fa-phone"></i>
+          <input type="tel" id="loginPhone" class="form-control" placeholder="01xxxxxxxxx" required>
+        </div>
+      </div>
+      <div class="form-group mb-4">
+        <label class="form-label">كلمة المرور</label>
+        <div class="input-with-icon">
+          <i class="fa-solid fa-lock"></i>
+          <input type="password" id="loginPass" class="form-control" placeholder="********" required>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary w-full py-3 mb-3">دخول</button>
+      <div class="text-center"><a href="#" class="text-primary small">نسيت كلمة المرور؟</a></div>
+    </form>
+  </div>
+
+  <!-- Scroll To Top -->
+  <button id="scroll-top" class="scroll-top-btn"><i class="fa-solid fa-arrow-up"></i></button>
+
+  <!-- Scripts -->
+  <!-- Swiper JS -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+  <!-- Custom JS -->
+  <script src="js/script.js" defer></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const homeDynamicProducts = document.getElementById('home-dynamic-products');
+      const heroWrapper = document.getElementById('hero-swiper-wrapper');
+
+      // --- Mobile Menu Toggle ---
+      const mobileBtn = document.getElementById('mobile-menu-btn');
+      const navMenu = document.querySelector('.main-nav');
+      if (mobileBtn && navMenu) {
+        mobileBtn.addEventListener('click', () => {
+          navMenu.classList.toggle('active');
+          mobileBtn.innerHTML = navMenu.classList.contains('active') ? '<i class="fa-solid fa-times"></i>' : '<i class="fa-solid fa-bars"></i>';
+        });
+      }
+
+      function renderHeroAds() {
+        const ads = JSON.parse(localStorage.getItem('abunour_ads')) || [];
+        if (ads.length > 0 && heroWrapper) {
+          heroWrapper.innerHTML = ads.map(ad => `
+                <div class="swiper-slide hero-slide" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('${ad.image}'); background-size: cover; background-position: center;">
+                  <div class="container h-full d-flex align-center">
+                    <div class="hero-content fade-up">
+                      <h2>${ad.title}</h2>
+                      <a href="${ad.link || '#'}" class="btn btn-primary">اكتشف الآن <i class="fa-solid fa-arrow-left"></i></a>
+                    </div>
+                  </div>
+                </div>
+              `).join('');
+        }
+      }
+      renderHeroAds();
+
+      function renderHomeProducts() {
+        if (!homeDynamicProducts) return;
+        let products = JSON.parse(localStorage.getItem('abunour_products')) || [];
+        products = products.reverse().slice(0, 8);
+        if (products.length > 0) {
+          homeDynamicProducts.innerHTML = '';
+          products.forEach(p => {
+            const imgSrc = p.image || 'https://via.placeholder.com/400?text=صورة+المنتج';
+            homeDynamicProducts.innerHTML += `
+              <div class="product-card glass-effect hover-up fade-in" id="product-card-${p.id}">
+                <ul class="product-actions">
+                  <li><a href="#" title="إضافة للمفضلة"><i class="fa-regular fa-heart"></i></a></li>
+                  <li><a href="product_details.html?id=${p.id}" title="نظرة سريعة"><i class="fa-regular fa-eye"></i></a></li>
+                </ul>
+                <div class="product-badges"><span class="badge-new">جديد</span></div>
+                <div class="product-img" style="height:200px; padding:1rem; display:flex; align-items:center; justify-content:center;">
+                  <img src="${imgSrc}" alt="${p.name}" style="max-height:100%; object-fit:contain;" loading="lazy">
+                </div>
+                <div class="product-content">
+                  <div class="product-category">${p.category}</div>
+                  <h3 class="product-title"><a href="product_details.html?id=${p.id}">${p.name}</a></h3>
+                  <div class="product-rating">
+                    ${'<i class="fa-solid fa-star text-warning"></i>'.repeat(5)}
+                  </div>
+                  <div class="product-price">
+                    <span class="new-price">${p.price} ج.م</span>
+                  </div>
+                  <button class="btn btn-primary w-full add-to-cart-btn" style="margin-top: 10px;">
+                    <i class="fa-solid fa-cart-plus"></i> أضف للسلة
+                  </button>
+                </div>
+              </div>
+            `;
+          });
+        }
+      }
+      renderHomeProducts();
+
+      // Live Search Feature
+      const liveSearchInput = document.getElementById('live-search');
+      const searchResultsBox = document.getElementById('search-results');
+
+      if (liveSearchInput && searchResultsBox) {
+        liveSearchInput.addEventListener('input', function (e) {
+          const query = e.target.value.trim().toLowerCase();
+          if (query.length === 0) {
+            searchResultsBox.style.display = 'none';
+            return;
+          }
+          let products = JSON.parse(localStorage.getItem('abunour_products')) || [];
+          const results = products.filter(p => p.name.toLowerCase().includes(query) || p.category.toLowerCase().includes(query));
+          if (results.length > 0) {
+            searchResultsBox.innerHTML = results.slice(0, 8).map(p => `
+                      <a href="product_details.html?id=${p.id}" style="display:flex; align-items:center; gap:15px; padding:15px; border-bottom:1px solid var(--clr-border-light); text-decoration:none; color:var(--clr-text);">
+                          <div style="width:60px; height:60px; display:flex; align-items:center; justify-content:center; background:white;">
+                            <img src="${p.image || 'https://via.placeholder.com/100'}" style="max-width:100%; max-height:100%; object-fit:contain;" loading="lazy">
+                          </div>
+                          <div style="flex:1;">
+                              <div style="font-weight:700; margin-bottom:5px;">${p.name}</div>
+                              <div style="color:var(--clr-primary); font-weight:bold;">${p.price} ج.م</div>
+                          </div>
+                      </a>
+                  `).join('');
+            searchResultsBox.style.display = 'block';
+          } else {
+            searchResultsBox.innerHTML = '<div style="padding: 20px; text-align: center;">لا توجد نتائج.</div>';
+            searchResultsBox.style.display = 'block';
+          }
+        });
+        document.addEventListener('click', (e) => { if (!e.target.closest('.search-container')) searchResultsBox.style.display = 'none'; });
+      }
+
+      // --- Premium Features ---
+      window.showToast = function (message) {
+        const toast = document.getElementById('notification-toast');
+        const toastMsg = document.getElementById('toast-message');
+        if (toast && toastMsg) {
+          toastMsg.textContent = message;
+          toast.classList.add('show');
+          setTimeout(() => toast.classList.remove('show'), 3000);
+        }
+      };
+
+      function updateFlashCountdown() {
+        const countdown = document.getElementById('flash-countdown');
+        if (!countdown) return;
+        let target = new Date(); target.setHours(23, 59, 59, 0);
+        const now = new Date(); const diff = target - now;
+        if (diff <= 0) { countdown.innerHTML = "انتهى العرض!"; return; }
+        const h = Math.floor(diff / (1000 * 60 * 60));
+        const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        const s = Math.floor((diff % (1000 * 60)) / 1000);
+        countdown.innerHTML = `
+          <div class="time-box"><span>${h.toString().padStart(2, '0')}</span><small>ساعات</small></div>
+          <div class="time-box"><span>${m.toString().padStart(2, '0')}</span><small>دقائق</small></div>
+          <div class="time-box"><span>${s.toString().padStart(2, '0')}</span><small>ثواني</small></div>
+        `;
+      }
+      setInterval(updateFlashCountdown, 1000);
+
+      const chatToggle = document.getElementById('openChat');
+      const chatWindow = document.getElementById('chatWindow');
+      if (chatToggle && chatWindow) {
+        chatToggle.addEventListener('click', () => chatWindow.classList.toggle('active'));
+        document.getElementById('closeChat').addEventListener('click', () => chatWindow.classList.remove('active'));
+      }
+
+      const diseaseDatabase = {
+        "صداع": { treatments: "بنادول اكسترا (Panadol Extra)", alternatives: ["أدول", "باشيمول", "بارامول", "سيتال", "بيرال"], usage: "قرص كل 6 إلى 8 ساعات عند اللزوم.", note: "يُفضل استخدامه بعد الأكل لتجنب التهاب المعدة." },
+        "سخونية": { treatments: "سيتال (Cetal)", alternatives: ["فيفادول", "أدول", "بارامول", "تيمبرا"], usage: "قرص كل 6 ساعات حتى انخفاض الحرارة.", note: "استخدم كمادات مياه فاترة." },
+        "حرارة": { treatments: "سيتال (Cetal)", alternatives: ["فيفادول", "أدول", "بارامول", "تيمبرا"], usage: "قرص كل 6 ساعات حتى انخفاض الحرارة.", note: "استخدم كمادات مياه فاترة." },
+        "كحة": { treatments: "سيلجون (للناشفة) أو توسكان (للبلغم)", alternatives: ["برونكوفين", "توسكان", "أوبلكس", "سيلجون"], usage: "ملعقة كبيرة 3 مرات يومياً.", note: "حدد نوع الكحة (ناشفة أم ببلغم)." },
+        "مغص": { treatments: "بسكوبان (Buscopan)", alternatives: ["فيسرالجين", "سبازموبرالجين", "سبازمومين"], usage: "قرص 3 مرات يومياً قبل الأكل.", note: "يفيد شرب النعناع أو الكمون الدافئ." },
+        "حموضة": { treatments: "جافيسكون (Gaviscon)", alternatives: ["إبيكوجيل", "ميكوجيل", "مالوكس", "راني"], usage: "ملعقة كبيرة بعد الأكل بـ 15 دقيقة.", note: "تجنب الأكلات الحارة قبل النوم." },
+        "برد": { treatments: "كونجيستال (Congestal)", alternatives: ["كومتركس", "بنادول كولد اند فلو", "123"], usage: "قرص كل 8 ساعات.", note: "راحة تامة مع تناول الليمون والبرتقال." },
+        "إسهال": { treatments: "ستربتوكين (Streptoquin)", alternatives: ["أنتينال", "نانازوكسيد", "سميكتا"], usage: "قرص 3 مرات يومياً بعد الأكل.", note: "اشرب الكثير من السوائل لتعويض الفقد." },
+        "إمساك": { treatments: "دوفلاك (Duphalac)", alternatives: ["لاكتولوز", "سيدالاك", "مينالاكس"], usage: "ملعقة كبيرة ليلاً.", note: "أكثر من تناول الألياف والماء." },
+        "قولون": { treatments: "كولونا (Colona)", alternatives: ["ليبراكس", "كولوسباسمين", "جاست ريج"], usage: "قرص قبل الأكل بـ 20 دقيقة 3 مرات.", note: "البعد عن التوتر والأكلات المهيجة." },
+        "أسنان": { treatments: "كتفاست (Catafast) فوار", alternatives: ["كتافلام", "بروفين", "أدول"], usage: "كيس فوار عند اللزوم.", note: "هذا مسكن مؤقت، يرجى زيارة طبيب الأسنان." },
+        "حلق": { treatments: "ستربسلز (Strepsils)", alternatives: ["لاريبرو", "برادورال", "أوروفار"], usage: "قرص استحلاب كل 3 ساعات.", note: "الغرغرة بمياه دافئة وملح مفيدة." },
+        "ترجيع": { treatments: "موتيليوم (Motilium)", alternatives: ["بريمبران", "موتينورم", "إمريست"], usage: "قرص قبل الأكل بـ 30 دقيقة.", note: "تجنب الأكل الدسم واحرص على السوائل." },
+        "أنيميا": { treatments: "فيروجلوبين (Feroglobin)", alternatives: ["فيرو فول", "فيفول", "هيموتون"], usage: "كبسولة واحدة يومياً بعد الغداء.", note: "تناول الخضروات الورقية والكبده." },
+        "حب شباب": { treatments: "أكنيميسين (Aknemycin) محلول", alternatives: ["أدابالين جيل", "أكنى فرى", "ماربالين"], usage: "دهان ليلي على الحبوب فقط.", note: "تجنب لمس الحبوب باليد أو عصرها." },
+        "جرح": { treatments: "بيتادين (Betadine) محلول", alternatives: ["بولي فيدون", "درماتين", "سافلون"], usage: "تطهير مكان الجرح مرتين يومياً.", note: "إذا كان الجرح عميقاً يرجى التوجه للمستشفى." },
+        "حرق": { treatments: "ميبو (MEBO) مرهم", alternatives: ["ديرمازين", "بيرن سول", "هيالوسول"], usage: "دهان طبقة رقيقة 3 مرات يومياً.", note: "لا تضع ثلجاً مباشراً، استخدم مياه جارية باردة." },
+        "جيوب أنفية": { treatments: "أوتريفين (Otrivin) بخاخ", alternatives: ["نازونيكس", "فليكسوناز", "بكلوناز"], usage: "بخة في كل فتحة أنف عند اللزوم.", note: "لا تستخدم البخاخ لأكثر من 5 أيام متتالية." },
+        "حساسية": { treatments: "تلفاست (Telfast)", alternatives: ["أليجرا", "فيكسودين", "كلاريتين"], usage: "قرص واحد يومياً قبل النوم.", note: "تجنب المسببات المعروفة للحساسية." },
+        "آلام مفاصل": { treatments: "بروفين 400 (Brufen 400)", alternatives: ["ماركوفين", "أدفل", "أنتيفلام"], usage: "قرص بعد الأكل عند اللزوم.", note: "تجنب الوقوف لفترات طويلة." }
+      };
+
+      window.handleChatSuggestion = function (text) {
+        document.getElementById('chatInputBar').value = text;
+        document.getElementById('chatForm').dispatchEvent(new Event('submit'));
+      };
+
+      document.getElementById('chatForm')?.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const chatInputBar = document.getElementById('chatInputBar');
+        const typingIndicator = document.getElementById('chatTyping');
+        const txt = chatInputBar.value.trim();
+        if (!txt) return;
+
+        const chatMsgs = document.getElementById('chatMessages');
+        const uMsg = document.createElement('div'); uMsg.className = 'msg msg-user'; uMsg.textContent = txt;
+        chatMsgs.appendChild(uMsg);
+        chatInputBar.value = '';
+        chatMsgs.scrollTop = chatMsgs.scrollHeight;
+
+        // Show Pro Typing Indicator
+        typingIndicator.style.display = 'flex';
+        chatMsgs.scrollTop = chatMsgs.scrollHeight;
+
+        setTimeout(() => {
+          typingIndicator.style.display = 'none';
+          let resp = "شكراً لتواصلك مع صيدلية أبو نور. لم أتعرف على الحالة بدقة، يرجى الاتصال بنا فوراً على <strong style='color:var(--clr-primary)'>01068187197</strong> أو زيارة الطبيب المختص.";
+          const searchLower = txt.toLowerCase();
+
+          for (const key in diseaseDatabase) {
+            if (searchLower.includes(key)) {
+              const info = diseaseDatabase[key];
+              resp = `<div style="border-bottom: 2px solid var(--clr-primary); margin-bottom: 10px; padding-bottom: 5px; font-weight: 800; color: var(--clr-primary);">
+                        <i class="fa-solid fa-notes-medical"></i> تقرير الاستشارة الذكية: ${key}
+                      </div>
+                      <div style="margin-bottom: 8px;"><i class="fa-solid fa-capsules"></i> <strong>العلاج المبدئي:</strong> ${info.treatments}</div>
+                      <div style="margin-bottom: 8px;"><i class="fa-solid fa-rotate"></i> <strong>البدائل الآمنة:</strong> ${info.alternatives.join(' - ')}</div>
+                      <div style="margin-bottom: 8px;"><i class="fa-solid fa-clock"></i> <strong>طريقة الاستخدام:</strong> ${info.usage}</div>
+                      <div style="background: rgba(0, 168, 89, 0.05); padding: 10px; border-radius: 10px; font-size: 0.85rem; border-right: 3px solid var(--clr-primary);">
+                        <i class="fa-solid fa-lightbulb"></i> <strong>نصيحة طبية:</strong> ${info.note}
+                      </div>`;
+              break;
+            }
+          }
+
+          const bMsg = document.createElement('div');
+          bMsg.className = 'msg msg-bot';
+          bMsg.innerHTML = resp;
+          chatMsgs.appendChild(bMsg);
+          chatMsgs.scrollTop = chatMsgs.scrollHeight;
+        }, 1500); // More realistic "Thinking" time
+      });
+
+      // UltraProMax: Live Notifications Logic
+      const notifMessages = [
+        "أحمد طلب 'أدول' الآن من حي الساحة",
+        "سارة اشترت 'كريم فيشي' الآن",
+        "تم توصيل طلبية إلى شارع الحرية بنجاح",
+        "مستشارنا الطبي يرد الآن على استشارة صداع",
+        "خصم 20% لفترة محدودة على الفيتامينات"
+      ];
+      function showLiveNotif() {
+        const notif = document.getElementById('live-notification');
+        const text = document.getElementById('notif-text');
+        if (!notif || !text) return;
+        text.textContent = notifMessages[Math.floor(Math.random() * notifMessages.length)];
+        notif.classList.add('show');
+        setTimeout(() => notif.classList.remove('show'), 5000);
+      }
+      setInterval(showLiveNotif, 15000);
+
+      // UltraProMax: Voice Input Simulation
+      const voiceBtn = document.querySelector('.voice-btn');
+      if (voiceBtn) {
+        voiceBtn.addEventListener('click', () => {
+          showToast("جاري الاستماع... (ميزة UltraProMax)");
+          const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+          if (recognition) {
+            recognition.lang = 'ar-EG';
+            recognition.start();
+            recognition.onresult = (event) => {
+              const transcript = event.results[0][0].transcript;
+              document.getElementById('chatInputBar').value = transcript;
+              document.getElementById('chatForm').dispatchEvent(new Event('submit'));
+            };
+          }
+        });
+      }
+    });
+  </script>
+</body>
+
+</html>
