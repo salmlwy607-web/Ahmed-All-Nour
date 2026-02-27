@@ -126,6 +126,18 @@
             background: rgba(255, 255, 255, 0.05);
             border-color: rgba(255, 255, 255, 0.1);
         }
+
+        .admin-notif {
+            background: rgba(0, 168, 89, 0.1);
+            border: 1px solid var(--clr-primary);
+            color: var(--clr-primary);
+            padding: 10px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            text-align: center;
+            font-weight: bold;
+            display: none;
+        }
     </style>
 </head>
 
@@ -138,17 +150,18 @@
         <div class="auth-box glass-effect-heavy">
             <div class="auth-header">
                 <i class="fa-solid fa-user-shield"></i>
-                <h2>أهلاً بك مجدداً</h2>
-                <p>سجل دخولك لمتابعة طلباتك ومحفوظاتك</p>
+                <h2 id="auth-title">أهلاً بك مجدداً</h2>
+                <p id="auth-desc">سجل دخولك لمتابعة طلباتك ومحفوظاتك</p>
+                <div id="admin-notif" class="admin-notif">وضع دخول المسؤول نشط 🔐</div>
             </div>
-            <form onsubmit="event.preventDefault(); window.location.href='account.html';">
+            <form id="login-form">
                 <div>
-                    <label class="form-label">البريد الإلكتروني أو رقم الهاتف</label>
-                    <input type="text" class="form-control" placeholder="example@mail.com" required>
+                    <label class="form-label">اسم المستخدم أو البريد</label>
+                    <input type="text" id="username" class="form-control" placeholder="admin" required>
                 </div>
                 <div>
                     <label class="form-label">كلمة المرور</label>
-                    <input type="password" class="form-control" placeholder="••••••••" required>
+                    <input type="password" id="password" class="form-control" placeholder="••••••••" required>
                 </div>
                 <div
                     style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; font-size: 0.9rem;">
@@ -159,10 +172,36 @@
                 <button type="submit" class="btn btn-primary btn-auth"><i class="fa-solid fa-right-to-bracket"></i>
                     تسجيل الدخول</button>
             </form>
+            <script>
+                const urlParams = new URLSearchParams(window.location.search);
+                const isAdminMode = urlParams.get('mode') === 'admin';
+
+                if (isAdminMode) {
+                    document.getElementById('admin-notif').style.display = 'block';
+                    document.getElementById('auth-title').textContent = 'لوحة التحكم';
+                    document.getElementById('auth-desc').textContent = 'يرجى إدخال بيانات المسؤول للوصول للنظام';
+                }
+
+                document.getElementById('login-form').addEventListener('submit', function (e) {
+                    e.preventDefault();
+                    const user = document.getElementById('username').value;
+                    const pass = document.getElementById('password').value;
+
+                    // Admin Credentials: admin / !!@@##$$%%
+                    if (user === 'admin' && pass === '!!@@##$$%%') {
+                        window.location.href = 'admin.html';
+                    } else if (!isAdminMode) {
+                        window.location.href = 'account.html';
+                    } else {
+                        alert('بيانات الدخول غير صحيحة للمسؤول');
+                    }
+                });
+            </script>
             <div class="auth-footer">
                 <span class="text-muted">ليس لديك حساب؟</span> <a href="register.html">إنشاء حساب جديد</a>
             </div>
         </div>
     </div>
 </body>
+
 </html>

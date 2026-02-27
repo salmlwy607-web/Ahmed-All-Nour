@@ -16,6 +16,19 @@
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://abunour-pharmacy.com">
 
+  <!-- Google Search Console Verification -->
+  <meta name="google-site-verification" content="p4LrULk3GFQ36XdRLYURQqDVEmHvIX2TVk_l9brbztE" />
+  <meta name="google-site-verification" content="jlvJVsltGErr5y2ovPaFfrDq78D_XTc0RhGkolkl7Ys" />
+
+  <!-- Global site tag (gtag.js) - Google Analytics Placeholder -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX');
+  </script>
+
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://abunour-pharmacy.com">
@@ -1171,6 +1184,16 @@
           }
         });
       }
+      // Secret Admin Entry: Click logo icon 5 times
+      let logoClicks = 0;
+      document.querySelector('.logo-icon')?.addEventListener('click', () => {
+        logoClicks++;
+        if (logoClicks === 5) {
+          showToast("تم تفعيل بوابة الإدارة... جاري التحويل");
+          setTimeout(() => window.location.href = 'login.html?mode=admin', 1500);
+          logoClicks = 0;
+        }
+      });
     });
   </script>
 </body>
